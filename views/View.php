@@ -4,6 +4,8 @@ namespace views;
 
 abstract class View
 {
+	public $name;
+
 	const DEFAULT_HEADER = 'header.php';
 	const DEFAULT_FOOTER = 'footer.php';
 

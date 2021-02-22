@@ -1,7 +1,7 @@
     </main>
 
-    <footer class="fixed-bottom bg-light w-100">
-        <div class="container text-center my-3">
+    <footer class="bg-dark w-100 p-2 mt-5">
+        <div class="container text-center">
             <span class="text-muted">&copy All rights reserved</span>
         </div>
     </footer>
