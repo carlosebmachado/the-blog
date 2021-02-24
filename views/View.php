@@ -4,12 +4,10 @@ namespace views;
 
 abstract class View
 {
-	public $name;
-
 	const DEFAULT_HEADER = 'header.php';
 	const DEFAULT_FOOTER = 'footer.php';
 
-	public function render($body, $header = null, $footer = null)
+	public static function render($body, $header = null, $footer = null)
 	{
 		if ($header == null)
 			include('views/includes/components/'.self::DEFAULT_HEADER);

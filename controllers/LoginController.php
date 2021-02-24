@@ -4,11 +4,6 @@ namespace controllers;
 
 class LoginController extends Controller
 {
-	public function __construct($view, $model)
-	{
-		parent::__construct($view, $model);
-	}
-
 	public function index()
 	{
 		if (isset($_POST['action']))
@@ -18,6 +13,6 @@ class LoginController extends Controller
 			else
 				die('Wrong');
 		}
-		$this->view->render('login.php');
+		\views\LoginView::render('login.php');
 	}
 }

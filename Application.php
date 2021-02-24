@@ -17,10 +17,7 @@ class Application
 			$url[0] = self::DEFAULT_PAGE;
 		}
 
-		$view = 'views\\'.ucfirst($url[0]).'View';
-		$model = 'models\\'.ucfirst($url[0]).'Model';
-
-		$controller = new $class(new $view, new $model);
+		$controller = new $class();
 		$controller->index();
 	}
 }
