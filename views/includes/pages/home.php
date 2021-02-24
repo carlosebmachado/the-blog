@@ -27,7 +27,7 @@
     foreach ($articles as $article) {
         $ptPostDate = date("d/m/Y", strtotime($article->getPostDate()))
     ?>
-    <div class="row mt-5">
+    <div class="row mt-4">
         <div class="col-md-4 contain">
             <img class="img-fluid"  src="<?php echo 'data:image/jpeg;base64,'.base64_encode($article->getCallImg()) ?>" alt="Blog call image">
         </div>
@@ -36,6 +36,7 @@
             <small class="text-muted"><?php echo $ptPostDate ?></small>
             <p><?php echo $article->getSummary() ?></p>
         </div>
+        <span class="border-bottom mx-auto w-75 mt-1"></span>
     </div>
     <?php
     }
