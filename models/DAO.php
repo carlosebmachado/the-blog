@@ -6,45 +6,58 @@ use Exception;
 
 class DAO
 {
-    public static function select($sql)
+    static $pdo;
+
+    public static function get_pdo()
+    {
+        if (!isset($pdo))
+        {
+            $pdo = new \PDO('mysql:host='.\Config::DB_HOST.';dbname='.\Config::DB_NAME, \Config::DB_USER, \Config::DB_PASSWORD);
+        }
+        return $pdo;
+    }
+
+    public static function select($sql, $params = null)
     {
         try
         {
-            $pdo = \DB::getPDO();
+            $pdo = self::get_pdo();
             $query = $pdo->prepare($sql);
-            $query->execute();
+            if ($params != null) $query->execute($params);
+            else $query->execute();
         }
-        catch (Exception)
+        catch (Exception $e)
         {
-            
+            return null;
         }
-        return $query->fetchAll();
+        return $query;
     }
 
-    public static function insert($sql)
+    public static function insert($sql, $params = null)
     {
-        return self::boolSql($sql);
+        return self::bool_op($sql, $params);
     }
 
-    public static function update($sql)
+    public static function update($sql, $params = null)
     {
-        return self::boolSql($sql);
+        return self::bool_op($sql, $params);
     }
 
-    public static function delete($sql)
+    public static function delete($sql, $params = null)
     {
-        return self::boolSql($sql);
+        return self::bool_op($sql, $params);
     }
 
-    private static function boolSql($sql)
+    private static function bool_op($sql, $params = null)
     {
         try
         {
-            $pdo = \DB::getPDO();
+            $pdo = self::get_pdo();
             $query = $pdo->prepare($sql);
-            $query->execute();
+            if ($params != null) $query->execute($params);
+            else $query->execute();
         }
-        catch (Exception)
+        catch (Exception $e)
         {
             return false;
         }

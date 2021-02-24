@@ -34,6 +34,9 @@ $curPage = basename($_SERVER['REQUEST_URI']);
 						<li class="nav-item<?php if ($curPage == Config::BASE_NAME || $curPage == 'home') echo ' active' ?>">
 							<a class="nav-link" href="home">Home<?php if ($curPage == Config::BASE_NAME || $curPage == 'home') echo ' <span class="sr-only">(current)</span>' ?></a>
 						</li>
+						<li class="nav-item<?php if ($curPage == 'about') echo ' active' ?>">
+							<a class="nav-link" href="about">About<?php if ($curPage == 'about') echo ' <span class="sr-only">(current)</span>' ?></a>
+						</li>
 						<li class="nav-item<?php if ($curPage == 'contact') echo ' active' ?>">
 							<a class="nav-link" href="contact">Contact<?php if ($curPage == 'contact') echo ' <span class="sr-only">(current)</span>' ?></a>
 						</li>

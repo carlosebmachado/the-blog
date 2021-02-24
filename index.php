@@ -1,6 +1,7 @@
 <?php
 
 define('ROOT_URL', basename(__DIR__));
+define('DAY_SECONDS', 60*60*24);
 
 $autoload = function ($class)
 {
