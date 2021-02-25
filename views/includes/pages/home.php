@@ -24,8 +24,8 @@
     // echo '<bg>';
     // echo count($articles);
 
-    foreach ($articles as $article) {
-        $ptPostDate = date("d/m/Y", strtotime($article->get_post_date()));
+    foreach ($articles as $article)
+    {
     ?>
     <div class="row mt-4">
         <div class="col-md-4 contain">
@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-8">
             <a href="<?php echo 'post?id='.$article->get_id() ?>"><h2><?php echo $article->get_title() ?></h2></a>
-            <small class="text-muted"><?php echo $ptPostDate ?></small>
+            <small class="text-muted"><?php echo $article->get_post_date() ?></small>
             <p><?php echo $article->get_summary() ?></p>
         </div>
         <span class="border-bottom mx-auto w-75 mt-1"></span>

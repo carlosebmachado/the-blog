@@ -1,6 +1,6 @@
 <?php
 
-use models\Model;
+namespace models;
 
 class Comment extends Model
 {
@@ -10,12 +10,11 @@ class Comment extends Model
     private $post_date;
     private $article_id;
     
-    function __construct($id, $name, $message, $article_id, $post_date)
+    function __construct($id, $name, $message, $post_date, $article_id)
     {
         $this->id = $id;
         $this->name = $name;
         $this->message = $message;
-        $this->article_id = $article_id;
         $this->post_date = $post_date;
         $this->article_id = $article_id;
     }
@@ -28,4 +27,31 @@ class Comment extends Model
     public function get_post_date() { return $this->post_date; }
     public function set_post_date($post_date) { $this->post_date = $post_date; }
     public function get_article_id() { return $this->article_id; }
+
+    public static function select_by_article_id($article_id)
+    {
+        $data = DAO::select("SELECT * FROM `comments` WHERE `article_id` = ".$article_id)->fetchAll();
+        $comments = [];
+
+        if ($data != null)
+        {
+            foreach ($data as $cd)
+            {
+                $c =  new Comment($cd['id'], $cd['name'], $cd['message'], $cd['post_date'], $cd['article_id']);
+                array_push($comments, $c);
+            }
+        }
+
+        return $comments;
+    }
+
+    public function insert()
+    {
+        if ($this->id == null)
+            $sql = "INSERT INTO `comments`(`id`, `name`, `message`, `post_date`, `article_id`) VALUES (NULL, ?, ?, ?, ?)";
+        else
+            $sql = "INSERT INTO `comments`(`id`, `name`, `message`, `post_date`, `article_id`) VALUES (".$this->id.", ?, ?, ?, ?)";
+
+        DAO::insert($sql, array($this->name, $this->message, $this->post_date, $this->article_id));
+    }
 }

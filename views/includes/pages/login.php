@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container w-25 mt-5">
 	<form method="post">
 		<div class="form-group">
 			<label for="uid">Email address</label>
