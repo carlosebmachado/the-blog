@@ -54,43 +54,26 @@
      <?php
     }
      ?>
-    <!-- 
-        Comment form
-    -->
-    <?php
-    if (isset($_POST['action']))
-    {
-        $name = $_POST['name'];
-        $message = $_POST['message'];
-
-        $comment =  new \models\Comment(null, $name, $message, date('Y-m-d'), $id);
-        $comment->insert();
-
-        unset($_POST['action']);
-        unset($_POST['name']);
-        unset($_POST['message']);
-
-        $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http")."://$_SERVER[HTTP_HOST]/blog/post?id=".$id;
-        header('Location: http://google.com');
-        //die();
-        //echo '<script>history.go(-1);</script>';
-    }
-    ?>
+</div>
+<!-- 
+    Comment form
+-->
+<div class="container w-50 mt-5">
     <div class="row mt-5">
-    <div class="col-md">
-        <h2>Leave a commentary:</h2>
-        <form method="post" action="">
-            <input type="hidden" name="id" value="<?php echo $id ?>">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" class="form-control" id="name">
-            </div>
-            <div class="form-group">
-                <label for="message">Commentary</label>
-                <textarea name="message" class="form-control" id="message"></textarea>
-            </div>
-            <button type="submit" name="action" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
+        <div class="col-md">
+            <h2>Leave a commentary:</h2>
+            <form method="post" action="functions">
+                <input type="hidden" name="id" value="<?php echo $id ?>">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="message">Commentary</label>
+                    <textarea name="message" class="form-control" id="message"></textarea>
+                </div>
+                <button type="submit" name="post_comment" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
 </div>
