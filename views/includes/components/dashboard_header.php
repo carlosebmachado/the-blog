@@ -32,20 +32,31 @@ $curPage = basename($_SERVER['REQUEST_URI']);
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-inline-block bg-dark sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
+                        <!--
                         <li class="nav-item">
-                            <a class="nav-link text-white active" aria-current="page" href="#">Dashboard</a>
+                            <a class="nav-link text-white active" aria-current="page" href="../admin/dashboard">Dashboard</a>
                         </li>
+                        -->
+                        <h5 class="ml-3 text-white">Posts</h5>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Posts</a>
+                            <a class="nav-link text-white" href="../admin/posts?action=new">New</a>
+                            <a class="nav-link text-white" href="../admin/posts?action=list">List</a>
+                            <a class="nav-link text-white" href="../admin/posts?action=edit">Edit</a>
+                            <a class="nav-link text-white" href="../admin/posts?action=delete">Delete</a>
                         </li>
+                        <h5 class="ml-3 text-white">Commentaries</h5>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Commentaries</a>
+                            <a class="nav-link text-white" href="../admin/commentaries?action=list">List</a>
+                            <a class="nav-link text-white" href="../admin/commentaries?action=delete">Delete</a>
                         </li>
+                        <h5 class="ml-3 text-white">About</h5>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">About</a>
+                            <a class="nav-link text-white" href="../admin/about?action=edit">Edit</a>
                         </li>
+                        <h5 class="ml-3 text-white">Messages</h5>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Messages</a>
+                            <a class="nav-link text-white" href="../admin/messages?action=list">List</a>
+                            <a class="nav-link text-white" href="../admin/messages?action=delete">Delete</a>
                         </li>
                     </ul>
                 </div>
