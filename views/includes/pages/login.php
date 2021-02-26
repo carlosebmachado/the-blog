@@ -8,6 +8,13 @@
 			<label for="pwd">Password</label>
 			<input type="password" name="pwd" class="form-control" id="pwd">
 		</div>
+		<?php
+		if (isset($_SESSION['ERR']))
+		{
+			echo '<div class="alert alert-danger" role="alert">'.$_SESSION['ERR'].'</div>';
+			unset($_SESSION['ERR']);
+		}
+		?>
 		<button type="submit" name="verify_login" class="btn btn-primary">Login</button>
 	</form>
 </div>

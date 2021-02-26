@@ -8,10 +8,21 @@ class LoginController extends Controller
 	{
 		if (isset($_POST['verify_login']))
 		{
-			if ($this->model->validateLogin($_POST['uid'], $_POST['pwd']))
-				die('Logged');
+			if (session_status() === PHP_SESSION_NONE) session_start();
+
+			$user = \models\User::select($_POST['uid'], $_POST['pwd']);
+			
+			if ($user != null)
+			{
+				$_SESSION['LOGGED'] = true;
+				$_SESSION['USER_NAME'] = $user->get_name();
+				header('Location: http://localhost/blog/admin');
+				die();
+			}
 			else
-				die('Wrong');
+			{
+				$_SESSION['ERR'] = 'Wrong user or password.';
+			}
 		}
 		\views\LoginView::render('login.php', 'login_header.php', 'login_footer.php');
 	}
