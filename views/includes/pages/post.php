@@ -62,7 +62,7 @@
     <div class="row mt-5">
         <div class="col-md">
             <h2>Leave a commentary:</h2>
-            <form method="post" action="functions">
+            <form method="post" action="">
                 <input type="hidden" name="id" value="<?php echo $id ?>">
                 <div class="form-group">
                     <label for="name">Name</label>

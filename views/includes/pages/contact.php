@@ -2,7 +2,7 @@
     <div class="row mt-5">
         <div class="col-md">
             <h2>Contact me:</h2>
-            <form method="post" action="functions">
+            <form method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="text" name="name" class="form-control" id="name">

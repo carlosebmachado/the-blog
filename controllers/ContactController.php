@@ -4,13 +4,18 @@ namespace controllers;
 
 class ContactController extends Controller
 {
-	// public function __construct($view, $model)
-	// {
-	// 	parent::__construct($view, $model);
-	// }
-
 	public function index()
 	{
+		if (isset($_POST['send_message']))
+		{
+			$name = $_POST['name'];
+			$email = $_POST['email'];
+			$message = $_POST['message'];
+
+			$contact_message =  new \models\ContactMessage(null, $name, $email, $message);
+			$contact_message->insert();
+		}
+
 		\views\ContactView::render('contact.php');
 	}
 }
