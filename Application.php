@@ -53,6 +53,10 @@ class Application
 			$HomeController->index();
 		});
 
+		Router::get('/login', function() use ($LoginController) {
+			header('Location: admin/login');
+		});
+
 		Router::get('/admin/login', function() use ($LoginController) {
 			$LoginController->index();
 		});

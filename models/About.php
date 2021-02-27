@@ -32,9 +32,13 @@ class About extends Model
         return $about;
     }
 
-    public function update()
+    public function update($name = null, $about = null, $photo = null)
     {
-        $sql = "INSERT INTO `comments`(`id`, `name`, `about`, `photo`) VALUES (".$this->id.", ?, ?, ?)";
-        DAO::update($sql, array($this->name, $this->about, $this->photo));
+        if ($name != null) $this->name = $name;
+        if ($about != null) $this->about = $about;
+        if ($photo != null) $this->photo = $photo;
+
+        $sql = "UPDATE `about` SET `name` = ?, `about` = ?, `photo` = ? WHERE `id` = ?";
+        return DAO::update($sql, array($this->name, $this->about, $this->photo, $this->id));
     }
 }

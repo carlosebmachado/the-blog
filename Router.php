@@ -17,9 +17,9 @@ class Router
 		{
 			$path = '/';
 		}
-		if ($url[0] != '/')
+		if (strlen($url) == 0 || $url[0] != '/')
 		{
-			$url = '/' . $url;
+			$url = '/'.$url;
 		}
 		if ($url[strlen($url) - 1] != '/')
 		{
@@ -27,13 +27,12 @@ class Router
 		}
 		if ($path[0] != '/')
 		{
-			$path = '/' . $path;
+			$path = '/'.$path;
 		}
 		if ($path[strlen($path) - 1] != '/')
 		{
 			$path .= "/";
 		}
-
 
 		if ($url == $path)
 		{
@@ -46,6 +45,7 @@ class Router
 		$url = explode('/', $url);
 		$ok = true;
 		$par = [];
+
 		if (count($path) == count($url))
 		{
 			foreach ($path as $key => $value)
@@ -71,7 +71,6 @@ class Router
 		}
 	}
 
-
 	public static function post($path, $arg)
 	{
 		if (!empty($_POST))
@@ -84,7 +83,7 @@ class Router
 			}
 			if ($url[0] != '/')
 			{
-				$url = '/' . $url;
+				$url = '/'.$url;
 			}
 			if ($url[strlen($url) - 1] != '/')
 			{
@@ -92,7 +91,7 @@ class Router
 			}
 			if ($path[0] != '/')
 			{
-				$path = '/' . $path;
+				$path = '/'.$path;
 			}
 			if ($path[strlen($path) - 1] != '/')
 			{

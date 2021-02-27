@@ -3,7 +3,7 @@ $curPage = basename($_SERVER['REQUEST_URI']);
 ?>
 
 <!doctype html>
-<html lang="en">
+<html class="h-100" lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -18,18 +18,18 @@ $curPage = basename($_SERVER['REQUEST_URI']);
 	<link href="/<?php echo Config::BASE_NAME ?>/assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">Company name</a>
+<body class="h-100">
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" style="height: 5%;">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">The Blog</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap"><a class="nav-link" href="?logout">Sign out</a></li>
         </ul>
     </header>
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-inline-block bg-dark sidebar collapse">
+    <div class="container-fluid" style="height: 95%;">
+        <div class="row h-100">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-inline-block bg-dark sidebar collapse h-100">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <!--
@@ -62,4 +62,8 @@ $curPage = basename($_SERVER['REQUEST_URI']);
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light h-100 clearfix">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+                    <h1 class="h2"><?php echo $curPage ?></h1>
+                </div>
+

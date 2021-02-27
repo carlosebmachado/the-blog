@@ -1,7 +1,8 @@
+<?php
+$about = \models\About::select();
+?>
+
 <div class="container mt-5">
-    <?php
-    $about = \models\About::select();
-    ?>
     <div class="row mt-5">
         <div class="col-md">
             <h2 class=""><?php echo $about->get_name() ?></h2>

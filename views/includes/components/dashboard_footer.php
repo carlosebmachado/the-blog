@@ -1,4 +1,6 @@
-    </main>
+            </main>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="/<?php echo Config::BASE_NAME ?>/assets/js/vendor/jquery-3.2.1.slim.min.js"></script>

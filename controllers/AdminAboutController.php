@@ -8,6 +8,19 @@ class AdminAboutController extends Controller
 	{
 		\models\Login::verify_logout();
 
+		if (isset($_POST['save']))
+		{
+			$name = $_POST['name'];
+			$about_text = $_POST['about'];
+			$image = $_POST['image'];
+
+			$about = \models\About::select();
+			if (!$about->update($name, $about_text, $image))
+			{
+				print('deu erraa');
+			}
+		}
+
 		if (isset($_GET['action']))
 		{
 			$action = $_GET['action'];
