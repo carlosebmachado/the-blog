@@ -1,5 +1,6 @@
 <?php
 $curPage = basename($_SERVER['REQUEST_URI']);
+$pageName = ucfirst(explode('?', $curPage)[0]).' - '.ucfirst($_GET['action']);
 ?>
 
 <!doctype html>
@@ -39,8 +40,8 @@ $curPage = basename($_SERVER['REQUEST_URI']);
                         -->
                         <h5 class="ml-3 text-white">Posts</h5>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="../admin/posts?action=new">New</a>
                             <a class="nav-link text-white" href="../admin/posts?action=list">List</a>
+                            <a class="nav-link text-white" href="../admin/posts?action=new">New</a>
                             <a class="nav-link text-white" href="../admin/posts?action=edit">Edit</a>
                             <a class="nav-link text-white" href="../admin/posts?action=delete">Delete</a>
                         </li>
@@ -64,6 +65,6 @@ $curPage = basename($_SERVER['REQUEST_URI']);
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light h-100 clearfix">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                    <h1 class="h2"><?php echo $curPage ?></h1>
+                    <h1 class="h2"><?php echo $pageName ?></h1>
                 </div>
 

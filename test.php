@@ -1,6 +1,6 @@
 <?php
 
-function test()
+if (isset($_GET['add_test_data']))
 {
     // basic image insertion
     //$image = file_get_contents("./assets/img/test/blog6.jpg");
@@ -36,5 +36,7 @@ function test()
             $c =  new \models\Comment(null, 'Person Name', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor ultrices augue, ut eleifend ipsum. Proin convallis augue ut nisl viverra, sit amet malesuada enim convallis. Quisque arcu diam, scelerisque sed molestie et, consequat in massa.', date('Y-m-d', strtotime($article->get_post_date()) + rand(0, 5)) * DAY_SECONDS, $article->get_id());
             $c->insert();
         }
-    }        
+    }
+
+    echo 'add_test_data finalized';
 }

@@ -1,28 +1,18 @@
 <div class="container mt-5">
     <?php
-    // echo $_SERVER['HTTP_HOST'];
-    // echo '<br>';
-    // echo $_SERVER['REQUEST_URI'];
     $pageAmt = 10;
-
     $curPage = 1;
     $offset = 0;
     if(isset($_GET['page']))
     {
-        //echo $_GET['page'];
         $curPage = (int)$_GET['page'];
         for ($i = 1; $i < $curPage; $i++)
         {
             $offset += $pageAmt;
         }
     }
-    // echo $begin;
-    // echo '<br>';
-    // echo $end;
+    
     $articles = \models\Article::select_on_interval($pageAmt, $offset);
-
-    // echo '<bg>';
-    // echo count($articles);
 
     foreach ($articles as $article)
     {

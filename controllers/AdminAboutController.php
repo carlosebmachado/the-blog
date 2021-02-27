@@ -15,10 +15,7 @@ class AdminAboutController extends Controller
 			$image = $_POST['image'];
 
 			$about = \models\About::select();
-			if (!$about->update($name, $about_text, $image))
-			{
-				print('deu erraa');
-			}
+			$about->update($name, $about_text, $image);
 		}
 
 		if (isset($_GET['action']))

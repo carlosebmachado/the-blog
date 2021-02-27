@@ -26,6 +26,13 @@ class ContactMessage extends Model
     public function get_message() { return $this->message; }
     public function set_message($message) { $this->message = $message; }
 
+    public static function select_by_id($id)
+    {
+        $data = DAO::select("SELECT * FROM `contact_messages` WHERE `id` = ?", array($id))->fetch();
+        $cm = new ContactMessage($data['id'], $data['name'], $data['email'], $data['message']);
+        return $cm;
+    }
+
     public static function select_all()
     {
         $data = DAO::select("SELECT * FROM `contact_messages`")->fetchAll();
@@ -36,6 +43,11 @@ class ContactMessage extends Model
             array_push($cm, $a);
         }
         return $cm;
+    }
+
+    public static function delete_by_id($id)
+    {
+        return DAO::select("DELETE FROM `contact_messages` WHERE `id` = ?", array($id));
     }
 
     public function insert()

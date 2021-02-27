@@ -28,6 +28,13 @@ class Comment extends Model
     public function set_post_date($post_date) { $this->post_date = $post_date; }
     public function get_article_id() { return $this->article_id; }
 
+    public static function select_by_id($id)
+    {
+        $data = DAO::select("SELECT * FROM `comments` WHERE `id` = ?", array($id))->fetch();
+        $comment = new Comment($data['id'], $data['name'], $data['message'], $data['post_date'], $data['article_id']);
+        return $comment;
+    }
+
     public static function select_by_article_id($article_id)
     {
         $data = DAO::select("SELECT * FROM `comments` WHERE `article_id` = ".$article_id)->fetchAll();
@@ -43,6 +50,11 @@ class Comment extends Model
         }
 
         return $comments;
+    }
+
+    public static function delete_by_id($id)
+    {
+        return DAO::select("DELETE FROM `comments` WHERE `id` = ?", array($id));
     }
 
     public function insert()

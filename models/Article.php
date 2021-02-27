@@ -12,7 +12,7 @@ class Article extends Model
     private $call_img;
     private $comments;
 
-    function __construct($id, $title, $post_date, $summary, $body, $call_img, $comments)
+    function __construct($id, $title, $post_date, $summary, $body, $call_img, $comments = null)
     {
         $this->id = $id;
         $this->title = $title;
@@ -89,5 +89,22 @@ class Article extends Model
             $sql = "INSERT INTO `article` (`id`, `title`, `post_date`, `summary`, `body`, `call_img`) VALUES (".$this->id.", ?, ?, ?, ?, ?)";
 
         DAO::insert($sql, array($this->title, $this->post_date, $this->summary, $this->body, $this->call_img));
+    }
+
+    public static function delete_by_id($id)
+    {
+        return DAO::select("DELETE FROM `article` WHERE `id` = ?", array($id));
+    }
+
+    public function update($title = null, $post_date = null, $summary = null, $body = null, $call_img = null)
+    {
+        if ($title != null) $this->title = $title;
+        if ($post_date != null) $this->post_date = $post_date;
+        if ($summary != null) $this->summary = $summary;
+        if ($body != null) $this->body = $body;
+        if ($call_img != null) $this->call_img = $call_img;
+
+        $sql = "UPDATE `article` SET `title` = ?, `post_date` = ?, `summary` = ?, `body` = ?, `call_img` = ? WHERE `id` = ?";
+        return DAO::update($sql, array($this->title, $this->post_date, $this->summary, $this->body, $this->call_img, $this->id));
     }
 }

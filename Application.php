@@ -4,6 +4,9 @@ use controllers\
 {
 	AboutController,
 	AdminAboutController,
+	AdminPostController,
+	AdminMessageController,
+	AdminCommentController,
 	AdminController,
 	ContactController,
 	HomeController,
@@ -19,6 +22,9 @@ class Application
 	{
 		$aboutController = new AboutController();
 		$adminAboutController = new AdminAboutController();
+		$adminPostController = new AdminPostController();
+		$adminMessageController = new AdminMessageController();
+		$adminCommentController = new AdminCommentController();
 		$AdminController = new AdminController();
 		$ContactController = new ContactController();
 		$HomeController = new HomeController();
@@ -33,11 +39,23 @@ class Application
 			$adminAboutController->index();
 		});
 
+		Router::get('/admin/posts', function() use ($adminPostController) {
+			$adminPostController->index();
+		});
+
+		Router::get('/admin/messages', function() use ($adminMessageController) {
+			$adminMessageController->index();
+		});
+
+		Router::get('/admin/commentaries', function() use ($adminCommentController) {
+			$adminCommentController->index();
+		});
+
 		Router::get('/admin/dashboard', function() use ($AdminController) {
 			$AdminController->index();
 		});
 
-		 Router::get('/admin', function() use ($AdminController) {
+		 Router::get('/admin', function() {
 		 	header('Location: admin/dashboard');
 		 });
 
@@ -53,7 +71,7 @@ class Application
 			$HomeController->index();
 		});
 
-		Router::get('/login', function() use ($LoginController) {
+		Router::get('/login', function() {
 			header('Location: admin/login');
 		});
 
