@@ -33,6 +33,18 @@ class ContactMessage extends Model
         return $cm;
     }
 
+    public static function select_on_interval($limit, $offset)
+    {
+        $data = DAO::select("SELECT * FROM `contact_messages` LIMIT ".$offset.", ".$limit)->fetchAll();
+        $cm = [];
+        foreach($data as $q)
+        {
+            $a = new ContactMessage($q['id'], $q['name'], $q['email'], $q['message']);
+            array_push($cm, $a);
+        }
+        return $cm;
+    }
+
     public static function select_all()
     {
         $data = DAO::select("SELECT * FROM `contact_messages`")->fetchAll();

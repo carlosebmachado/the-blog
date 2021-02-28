@@ -40,8 +40,18 @@
                     <td><?php echo $article->get_title() ?></td>
                     <td><?php echo $article->get_post_date() ?></td>
                     <td><?php echo $new_summary ?></td>
-                    <td><a href="../admin/posts?action=edit">Edit</a></td>
-                    <td><a href="../admin/posts?action=delete">Delete</a></td>
+                    <td>
+                    <form action="../admin/posts?action=edit" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $article->get_id() ?>">
+                        <button name="find_id" class="btn btn-primary">Edit</button>
+                    </form>
+                    </td>
+                    <td>
+                    <form action="../admin/posts?action=delete" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $article->get_id() ?>">
+                        <button name="find_id" class="btn btn-danger">Delete</button>
+                    </form>
+                    </td>
                 </tr>
     <?php
     }
@@ -57,6 +67,3 @@
         </div>
     </div>
 </div>
-
-
-

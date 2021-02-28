@@ -1,6 +1,9 @@
 <?php
 $curPage = basename($_SERVER['REQUEST_URI']);
-$pageName = ucfirst(explode('?', $curPage)[0]).' - '.ucfirst($_GET['action']);
+if ($curPage != 'dashboard')
+    $pageName = ucfirst(explode('?', $curPage)[0]).' - '.ucfirst($_GET['action']);
+else
+    $pageName = ucfirst($curPage);
 ?>
 
 <!doctype html>
@@ -30,40 +33,34 @@ $pageName = ucfirst(explode('?', $curPage)[0]).' - '.ucfirst($_GET['action']);
 
     <div class="container-fluid" style="height: 95%;">
         <div class="row h-100">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-inline-block bg-dark sidebar collapse h-100">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 bg-dark collapse h-100 d-inline-block">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
-                        <!--
                         <li class="nav-item">
-                            <a class="nav-link text-white active" aria-current="page" href="../admin/dashboard">Dashboard</a>
+                            <a class="nav-link text-white" href="../admin/dashboard"><h5>Dashboard</h5></a>
                         </li>
-                        -->
-                        <h5 class="ml-3 text-white">Posts</h5>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="../admin/posts?action=list">List</a>
-                            <a class="nav-link text-white" href="../admin/posts?action=new">New</a>
-                            <a class="nav-link text-white" href="../admin/posts?action=edit">Edit</a>
-                            <a class="nav-link text-white" href="../admin/posts?action=delete">Delete</a>
+                            <a class="nav-link text-white" href="../admin/about?action=edit"><h5>About</h5></a>
                         </li>
-                        <h5 class="ml-3 text-white">Commentaries</h5>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="../admin/commentaries?action=list">List</a>
-                            <a class="nav-link text-white" href="../admin/commentaries?action=delete">Delete</a>
+                            <a class="nav-link text-white mb-0 pb-0" href="../admin/posts?action=list"><h5>Posts</h5></a>
+                            <a class="nav-link text-white my-0 py-0" href="../admin/posts?action=new">New</a>
+                            <a class="nav-link text-white my-0 py-0" href="../admin/posts?action=edit">Edit</a>
+                            <a class="nav-link text-white mt-0 pt-0" href="../admin/posts?action=delete">Delete</a>
                         </li>
-                        <h5 class="ml-3 text-white">About</h5>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="../admin/about?action=edit">Edit</a>
+                            <a class="nav-link text-white mb-0 pb-0" href="../admin/commentaries?action=list"><h5>Commentaries</h5></a>
+                            <a class="nav-link text-white mt-0 pt-0" href="../admin/commentaries?action=delete">Delete</a>
                         </li>
-                        <h5 class="ml-3 text-white">Messages</h5>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="../admin/messages?action=list">List</a>
-                            <a class="nav-link text-white" href="../admin/messages?action=delete">Delete</a>
+                            <a class="nav-link text-white mb-0 pb-0" href="../admin/messages?action=list"><h5>Messages</h5></a>
+                            <a class="nav-link text-white mt-0 pt-0" href="../admin/messages?action=delete">Delete</a>
                         </li>
                     </ul>
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light h-100 clearfix">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light h-100">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                     <h1 class="h2"><?php echo $pageName ?></h1>
                 </div>

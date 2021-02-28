@@ -9,6 +9,7 @@ $call_img = '';
 if (isset($_POST['find_id']))
 {
     $post = \models\Article::select_by_id($_POST['id']);
+
     if ($post != null)
     {
         $id = (string)$post->get_id();

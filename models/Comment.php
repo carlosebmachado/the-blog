@@ -35,6 +35,23 @@ class Comment extends Model
         return $comment;
     }
 
+    public static function select_on_interval($limit, $offset)
+    {
+        $data = DAO::select("SELECT * FROM `comments` LIMIT ".$offset.", ".$limit)->fetchAll();
+        $comments = [];
+
+        if ($data != null)
+        {
+            foreach ($data as $cd)
+            {
+                $c =  new Comment($cd['id'], $cd['name'], $cd['message'], $cd['post_date'], $cd['article_id']);
+                array_push($comments, $c);
+            }
+        }
+
+        return $comments;
+    }
+
     public static function select_by_article_id($article_id)
     {
         $data = DAO::select("SELECT * FROM `comments` WHERE `article_id` = ".$article_id)->fetchAll();

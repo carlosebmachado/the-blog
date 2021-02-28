@@ -2,7 +2,7 @@
 
     <footer class="bg-dark w-100 p-2 mt-5">
         <div class="container text-center">
-            <span class="text-muted">&copy All rights reserved</span>
+            <span class="text-muted">&copy All rights reserved. <a href="admin/login">Admin</a></span>
         </div>
     </footer>
 
