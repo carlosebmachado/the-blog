@@ -11,7 +11,8 @@ use controllers\
 	ContactController,
 	HomeController,
 	LoginController,
-	PostController
+	PostController,
+	TestController
 };
 
 class Application
@@ -25,11 +26,12 @@ class Application
 		$adminPostController = new AdminPostController();
 		$adminMessageController = new AdminMessageController();
 		$adminCommentController = new AdminCommentController();
-		$AdminController = new AdminController();
-		$ContactController = new ContactController();
-		$HomeController = new HomeController();
-		$LoginController = new LoginController();
-		$PostController = new PostController();
+		$adminController = new AdminController();
+		$contactController = new ContactController();
+		$homeController = new HomeController();
+		$loginController = new LoginController();
+		$postController = new PostController();
+		$testController = new TestController();
 
 		Router::get('/about', function() use ($aboutController) {
 			$aboutController->index();
@@ -51,36 +53,40 @@ class Application
 			$adminCommentController->index();
 		});
 
-		Router::get('/admin/dashboard', function() use ($AdminController) {
-			$AdminController->index();
+		Router::get('/admin/dashboard', function() use ($adminController) {
+			$adminController->index();
 		});
 
 		 Router::get('/admin', function() {
 		 	header('Location: admin/dashboard');
 		 });
 
-		Router::get('/contact', function() use ($ContactController) {
-			$ContactController->index();
+		Router::get('/contact', function() use ($contactController) {
+			$contactController->index();
 		});
 
-		Router::get('/', function() use ($HomeController) {
-			$HomeController->index();
+		Router::get('/', function() use ($homeController) {
+			$homeController->index();
 		});
 
-		Router::get('/home', function() use ($HomeController) {
-			$HomeController->index();
+		Router::get('/home', function() use ($homeController) {
+			$homeController->index();
 		});
 
 		Router::get('/login', function() {
 			header('Location: admin/login');
 		});
 
-		Router::get('/admin/login', function() use ($LoginController) {
-			$LoginController->index();
+		Router::get('/admin/login', function() use ($loginController) {
+			$loginController->index();
 		});
 		
-		Router::get('/post', function() use ($PostController) {
-			$PostController->index();
+		Router::get('/post', function() use ($postController) {
+			$postController->index();
+		});
+
+		Router::get('/test', function() use ($testController) {
+			$testController->index();
 		});
 
 		// if (isset($_GET['url']))

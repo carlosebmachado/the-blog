@@ -32,8 +32,10 @@ CREATE TABLE `about` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `about` text NOT NULL,
-  `photo` longblob NOT NULL
+  `photo` longblob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `about`(`id`, `name`, `about`, `photo`) VALUES (NULL,'Your name','Your about text',NULL);
 
 --
 -- Table structure for table `article`
