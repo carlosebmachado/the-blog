@@ -35,7 +35,7 @@ if (isset($_GET['posts']))
 }
 
 // Adding post commentaries
-if (isset('comments'))
+if (isset($_GET['comments']))
 {
     $articles = \models\Article::select_all();
     foreach ($articles as $article)
@@ -52,7 +52,7 @@ if (isset('comments'))
 }
 
 // Adding messages
-if (isset('messages'))
+if (isset($_GET['messages']))
 {
     for ($i = 50; $i >= 0; $i--)
     {

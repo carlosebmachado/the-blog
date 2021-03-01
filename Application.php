@@ -12,13 +12,17 @@ use controllers\
 	HomeController,
 	LoginController,
 	PostController,
-	TestController
+	TestController,
+	ErrorController
 };
 
 class Application
 {
-	//public const DEFAULT_PAGE = 'Home';
-
+	/**
+	 * Run the Application handling the Router.
+	 *
+	 * @return void
+	 */
 	public function run()
 	{
 		$aboutController = new AboutController();
@@ -32,6 +36,7 @@ class Application
 		$loginController = new LoginController();
 		$postController = new PostController();
 		$testController = new TestController();
+		$errorController = new ErrorController();
 
 		Router::get('/about', function() use ($aboutController) {
 			$aboutController->index();
@@ -89,18 +94,8 @@ class Application
 			$testController->index();
 		});
 
-		// if (isset($_GET['url']))
-		// {
-		// 	$url = explode('/', $_GET['url']);
-		// 	$class = 'controllers\\'.ucfirst($url[0]).'Controller';
-		// }
-		// else
-		// {
-		// 	$class = 'controllers\\'.self::DEFAULT_PAGE.'Controller';
-		// 	$url[0] = self::DEFAULT_PAGE;
-		// }
-
-		// $controller = new $class();
-		// $controller->index();
+		Router::get('?', function() use ($errorController) {
+			$errorController->index();
+		});
 	}
 }

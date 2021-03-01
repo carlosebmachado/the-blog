@@ -6,6 +6,6 @@ class TestController extends Controller
 {
 	public function index()
 	{
-		\views\ContactView::render('test.php');
+		\views\View::render('test.php');
 	}
 }
