@@ -1,7 +1,6 @@
 <?php
 $about_info = \models\AboutInfo::select();
-$hasphoto = true;
-if ($about_info->get_photo() == '') $hasphoto = false;
+$hasphoto = $about_info->get_photo() == '' ? false : true;
 ?>
 <div class="row">
     <div class="col-sm bg-white m-1 p-3 rounded">

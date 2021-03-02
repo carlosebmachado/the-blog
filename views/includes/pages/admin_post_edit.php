@@ -9,7 +9,6 @@ $call_img = '';
 if (isset($_POST['find_id']))
 {
     $post = \models\BlogPost::select_by_id($_POST['id']);
-
     if ($post != null)
     {
         $id = (string)$post->get_id();
@@ -20,6 +19,7 @@ if (isset($_POST['find_id']))
         $call_img = $post->get_image();
     }
 }
+$hasphoto = $call_img == '' ? false : true;
 ?>
 <div class="row">
     <div class="col-sm bg-white m-1 p-3 rounded">
@@ -50,8 +50,10 @@ if (isset($_POST['find_id']))
                 <textarea name="body" class="form-control" id="body"><?php echo $body ?></textarea>
             </div>
             <div class="form-group">
-                <label for="call_img">Call image: </label>
-                <img class="mb-3" src="<?php if ($call_img != '') echo 'data:image/jpeg;base64, '.base64_encode($call_img) ?>" style="width: 10%;" alt="About image">
+                <label for="call_img">Call image</label>
+                <?php if ($hasphoto) { ?>
+                <img class="d-blick mb-3" src="<?php if ($call_img != '') echo 'data:image/jpeg;base64, '.base64_encode($call_img) ?>" style="width: 10%;" alt="About image">
+                <?php } ?>
                 <input type="file" name="call_img" class="form-control-file" id="call_img">
             </div>
             <button type="submit" name="edit" class="btn btn-primary">Save</button>

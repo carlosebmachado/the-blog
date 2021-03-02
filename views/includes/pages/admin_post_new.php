@@ -17,8 +17,7 @@
                 <textarea name="body" class="form-control" id="body"></textarea>
             </div>
             <div class="form-group">
-                <label for="call_img">Call image: </label>
-                <img class="mb-3" src="" style="width: 10%;" alt="About image">
+                <label for="call_img">Image</label>
                 <input type="file" name="call_img" class="form-control-file" id="call_img">
             </div>
             <button type="submit" name="new" class="btn btn-success">New</button>
