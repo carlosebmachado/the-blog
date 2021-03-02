@@ -6,12 +6,12 @@ $message = '';
 
 if (isset($_POST['find_id']))
 {
-    $comment = \models\Comment::select_by_id($_POST['id']);
+    $comment = \models\BlogPostCommentary::select_by_id($_POST['id']);
     if ($comment != null)
     {
         $id = (string)$comment->get_id();
         $name = $comment->get_name();
-        $post_date = $comment->get_post_date();
+        $post_date = $comment->get_date();
         $message = $comment->get_message();
     }
 }

@@ -5,21 +5,21 @@
     <?php
 
     $id = isset($_GET['id']) ? $_GET['id'] : 0;
-    $article = \models\Article::select_by_id($id);
+    $blog_post = \models\BlogPost::select_by_id($id);
 
-    //$ptPostDate = date("d/m/Y", strtotime($article->get_post_date()));
-    $new_body = str_replace('\r\n', '<br>', $article->get_body());
+    //$ptPostDate = date("d/m/Y", strtotime($blog_post->get_post_date()));
+    $new_body = str_replace('\r\n', '<br>', $blog_post->get_body());
 
     ?>
     <div class="row">
         <div class="col-md">
-            <h2 class="mb-0"><?php echo $article->get_title() ?></h2>
-            <small class="text-muted"><?php echo $article->get_post_date() ?></small>
+            <h2 class="mb-0"><?php echo $blog_post->get_title() ?></h2>
+            <small class="text-muted"><?php echo $blog_post->get_date() ?></small>
         </div>
     </div>
     <div class="row mt-5">
         <div class="col-md-12">
-            <img class="img-fluid" src="<?php echo 'data:image/jpeg;base64,'.base64_encode($article->get_call_img()) ?>" alt="Blog call image">
+            <img class="img-fluid" src="<?php echo 'data:image/jpeg;base64,'.base64_encode($blog_post->get_image()) ?>" alt="Blog call image">
         </div>
     </div>
     <div class="row mt-5">
@@ -34,7 +34,7 @@
 <div class="container w-50 mt-5">
     <h2>Comments:</h2>
     <?php
-    $comments = \models\Comment::select_by_article_id($id);
+    $comments = \models\BlogPostCommentary::select_by_blog_post_id($id);
     foreach ($comments as $comment)
     {
     ?>

@@ -15,7 +15,7 @@ class AdminPostController extends Controller
 			$body = $_POST['body'];
 			$call_img = $_POST['call_img'];
 
-			$article = new \models\Article(null, $title, date('Y-m-d'), $summary, $body, $call_img);
+			$article = new \models\BlogPost(null, $title, date('Y-m-d'), $summary, $body, $call_img);
 			$article->insert();
 		}
 
@@ -28,7 +28,7 @@ class AdminPostController extends Controller
 			$body = $_POST['body'];
 			$call_img = $_POST['call_img'];
 
-			$article = \models\Article::select_by_id($id);
+			$article = \models\BlogPost::select_by_id($id);
 			$article->update($title, $post_date, $summary, $body, $call_img);
 		}
 
@@ -36,7 +36,7 @@ class AdminPostController extends Controller
 		{
 			$id = $_POST['id'];
 
-			\models\Article::delete_by_id($id);
+			\models\BlogPost::delete_by_id($id);
 		}
 
 		if (isset($_GET['action']))

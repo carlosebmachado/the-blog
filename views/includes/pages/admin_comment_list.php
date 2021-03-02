@@ -12,19 +12,19 @@
             </thead>
             <tbody>
     <?php
-    $pageAmt = 5;
-    $curPage = 1;
+    $page_amt = 5;
+    $cur_page = 1;
     $offset = 0;
     if(isset($_GET['page']))
     {
-        $curPage = (int)$_GET['page'];
-        for ($i = 1; $i < $curPage; $i++)
+        $cur_page = (int)$_GET['page'];
+        for ($i = 1; $i < $cur_page; $i++)
         {
-            $offset += $pageAmt;
+            $offset += $page_amt;
         }
     }
     
-    $comments = \models\Comment::select_on_interval($pageAmt, $offset);
+    $comments = \models\BlogPostCommentary::select_on_interval($page_amt, $offset);
 
     foreach ($comments as $comment)
     {
@@ -48,15 +48,15 @@
                 </tr>
     <?php
     }
-    $nextPage = $curPage + 1;
-    $previousPage = $curPage > 1 ? $curPage - 1 : 1;
+    $next_page = $cur_page + 1;
+    $previous_page = $cur_page > 1 ? $cur_page - 1 : 1;
     ?>
             </tbody>
         </table>
         <div class="d-flex justify-content-center">
-            <a class="btn btn-outline-primary my-2 my-sm-0<?php if ($curPage == 1) echo ' disabled' ?>" href="<?php echo '?action=list&page='.$previousPage ?>"><</a>
-            <a class="mx-3 mt-1" href="#"><span><?php echo $curPage ?></span></a>
-            <a class="btn btn-outline-primary my-2 my-sm-0<?php if (count($comments) < $pageAmt) echo ' disabled' ?>" href="<?php echo '?action=list&page='.$nextPage ?>">></a>
+            <a class="btn btn-outline-primary my-2 my-sm-0<?php if ($cur_page == 1) echo ' disabled' ?>" href="<?php echo '?action=list&page='.$previous_page ?>"><</a>
+            <a class="mx-3 mt-1" href="#"><span><?php echo $cur_page ?></span></a>
+            <a class="btn btn-outline-primary my-2 my-sm-0<?php if (count($comments) < $page_amt) echo ' disabled' ?>" href="<?php echo '?action=list&page='.$next_page ?>">></a>
         </div>
     </div>
 </div>

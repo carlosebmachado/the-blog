@@ -13,57 +13,57 @@
             </thead>
             <tbody>
     <?php
-    $pageAmt = 5;
-    $curPage = 1;
+    $page_amt = 5;
+    $cur_page = 1;
     $offset = 0;
     if(isset($_GET['page']))
     {
-        $curPage = (int)$_GET['page'];
-        for ($i = 1; $i < $curPage; $i++)
+        $cur_page = (int)$_GET['page'];
+        for ($i = 1; $i < $cur_page; $i++)
         {
-            $offset += $pageAmt;
+            $offset += $page_amt;
         }
     }
     
-    $articles = \models\Article::select_on_interval($pageAmt, $offset);
+    $blog_posts = \models\BlogPost::select_on_interval($page_amt, $offset);
 
-    foreach ($articles as $article)
+    foreach ($blog_posts as $blog_post)
     {
-        $new_summary = $article->get_summary();
+        $new_summary = $blog_post->get_summary();
         if (strlen($new_summary) > 100)
         {
             $new_summary = substr($new_summary, 0, 100).'...';
         }
     ?>
                 <tr>
-                    <td><?php echo $article->get_id() ?></td>
-                    <td><?php echo $article->get_title() ?></td>
-                    <td><?php echo $article->get_post_date() ?></td>
+                    <td><?php echo $blog_post->get_id() ?></td>
+                    <td><?php echo $blog_post->get_title() ?></td>
+                    <td><?php echo $blog_post->get_date() ?></td>
                     <td><?php echo $new_summary ?></td>
                     <td>
                     <form action="../admin/posts?action=edit" method="POST">
-                        <input type="hidden" name="id" value="<?php echo $article->get_id() ?>">
+                        <input type="hidden" name="id" value="<?php echo $blog_post->get_id() ?>">
                         <button name="find_id" class="btn btn-primary">Edit</button>
                     </form>
                     </td>
                     <td>
                     <form action="../admin/posts?action=delete" method="POST">
-                        <input type="hidden" name="id" value="<?php echo $article->get_id() ?>">
+                        <input type="hidden" name="id" value="<?php echo $blog_post->get_id() ?>">
                         <button name="find_id" class="btn btn-danger">Delete</button>
                     </form>
                     </td>
                 </tr>
     <?php
     }
-    $nextPage = $curPage + 1;
-    $previousPage = $curPage > 1 ? $curPage - 1 : 1;
+    $next_page = $cur_page + 1;
+    $previous_page = $cur_page > 1 ? $cur_page - 1 : 1;
     ?>
             </tbody>
         </table>
         <div class="d-flex justify-content-center">
-            <a class="btn btn-outline-primary my-2 my-sm-0<?php if ($curPage == 1) echo ' disabled' ?>" href="<?php echo '?action=list&page='.$previousPage ?>"><</a>
-            <a class="mx-3 mt-1" href="#"><span><?php echo $curPage ?></span></a>
-            <a class="btn btn-outline-primary my-2 my-sm-0<?php if (count($articles) < $pageAmt) echo ' disabled' ?>" href="<?php echo '?action=list&page='.$nextPage ?>">></a>
+            <a class="btn btn-outline-primary my-2 my-sm-0<?php if ($cur_page == 1) echo ' disabled' ?>" href="<?php echo '?action=list&page='.$previous_page ?>"><</a>
+            <a class="mx-3 mt-1" href="#"><span><?php echo $cur_page ?></span></a>
+            <a class="btn btn-outline-primary my-2 my-sm-0<?php if (count($blog_posts) < $page_amt) echo ' disabled' ?>" href="<?php echo '?action=list&page='.$next_page ?>">></a>
         </div>
     </div>
 </div>

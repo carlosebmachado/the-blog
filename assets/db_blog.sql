@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 11:49 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.28
+-- Tempo de geração: 02-Mar-2021 às 11:57
+-- Versão do servidor: 10.4.17-MariaDB
+-- versão do PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,154 +18,169 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `blog`
+-- Banco de dados: `blog`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `about`
+-- Estrutura da tabela `about_info`
 --
 
-CREATE TABLE `about` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE `about_info` (
+  `id` tinyint(1) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `about` text NOT NULL,
-  `photo` longblob
+  `photo` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `about`(`id`, `name`, `about`, `photo`) VALUES (NULL,'Your name','Your about text',NULL);
-
 --
--- Table structure for table `article`
+-- Extraindo dados da tabela `about_info`
 --
 
-CREATE TABLE `article` (
+INSERT INTO `about_info` (`id`, `name`, `about`, `photo`) VALUES
+(1, 'Your name', 'Your about text', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `admin_user`
+--
+
+CREATE TABLE `admin_user` (
+  `id` tinyint(3) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `uid` varchar(15) NOT NULL,
+  `pwd` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `blog_post`
+--
+
+CREATE TABLE `blog_post` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `title` varchar(31) NOT NULL,
-  `post_date` date NOT NULL,
+  `title` varchar(30) NOT NULL,
+  `date` date NOT NULL,
   `summary` varchar(255) NOT NULL,
   `body` text NOT NULL,
-  `call_img` longblob NOT NULL
+  `image` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Table structure for table `comments`
+-- Estrutura da tabela `blog_post_commentary`
 --
 
-CREATE TABLE `comments` (
+CREATE TABLE `blog_post_commentary` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(63) NOT NULL,
-  `message` varchar(511) NOT NULL,
-  `post_date` date NOT NULL,
-  `article_id` bigint(20) UNSIGNED NOT NULL
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `date` date NOT NULL,
+  `blog_post_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Table structure for table `contact_messages`
+-- Estrutura da tabela `contact_message`
 --
 
-CREATE TABLE `contact_messages` (
+CREATE TABLE `contact_message` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(127) NOT NULL,
-  `email` varchar(127) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `date` date NOT NULL,
   `message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(127) NOT NULL,
-  `uid` varchar(15) NOT NULL,
-  `pwd` varchar(63) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `about`
+-- Índices para tabela `about_info`
 --
-ALTER TABLE `about`
+ALTER TABLE `about_info`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- Indexes for table `article`
+-- Índices para tabela `admin_user`
 --
-ALTER TABLE `article`
+ALTER TABLE `admin_user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- Indexes for table `comments`
+-- Índices para tabela `blog_post`
 --
-ALTER TABLE `comments`
+ALTER TABLE `blog_post`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Índices para tabela `blog_post_commentary`
+--
+ALTER TABLE `blog_post_commentary`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `fk_article_id` (`article_id`);
+  ADD UNIQUE KEY `fk_blog_post_id` (`blog_post_id`);
 
 --
--- Indexes for table `contact_messages`
+-- Índices para tabela `contact_message`
 --
-ALTER TABLE `contact_messages`
+ALTER TABLE `contact_message`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `about`
+-- AUTO_INCREMENT de tabela `about_info`
 --
-ALTER TABLE `about`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `about_info`
+  MODIFY `id` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `article`
+-- AUTO_INCREMENT de tabela `admin_user`
 --
-ALTER TABLE `article`
+ALTER TABLE `admin_user`
+  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de tabela `blog_post`
+--
+ALTER TABLE `blog_post`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
--- AUTO_INCREMENT for table `comments`
+-- AUTO_INCREMENT de tabela `blog_post_commentary`
 --
-ALTER TABLE `comments`
+ALTER TABLE `blog_post_commentary`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `contact_messages`
+-- AUTO_INCREMENT de tabela `contact_message`
 --
-ALTER TABLE `contact_messages`
+ALTER TABLE `contact_message`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
--- Constraints for table `comments`
+-- Limitadores para a tabela `blog_post_commentary`
 --
-ALTER TABLE `comments`
-  ADD CONSTRAINT `fk_article_id` FOREIGN KEY (`article_id`) REFERENCES `article` (`id`);
+ALTER TABLE `blog_post_commentary`
+  ADD CONSTRAINT `fk_post_id` FOREIGN KEY (`blog_post_id`) REFERENCES `blog_post` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

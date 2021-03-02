@@ -14,7 +14,7 @@ class AdminAboutController extends Controller
 			$about_text = $_POST['about'];
 			$image = $_POST['image'];
 
-			$about = \models\About::select();
+			$about = \models\AboutInfo::select();
 			$about->update($name, $about_text, $image);
 		}
 

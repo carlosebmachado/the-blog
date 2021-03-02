@@ -2,6 +2,13 @@
 
 class Router
 {
+	public static $executed;
+
+	public static function isExecuted()
+	{
+		return self::$executed;
+	}
+
 	public static function get($path, $arg)
 	{
 		$url = @$_GET['url'];
@@ -11,14 +18,15 @@ class Router
 		if (strlen($url) == 0 || $url[0] != '/')
 			$url = '/'.$url;
 		if ($url[strlen($url) - 1] != '/')
-			$url .= "/";
+			$url .= '/';
 		if ($path[0] != '/')
 			$path = '/'.$path;
 		if ($path[strlen($path) - 1] != '/')
-			$path .= "/";
+			$path .= '/';
 
 		if ($url == $path)
 		{
+			self::$executed = true;
 			$arg();
 			return true;
 		}
@@ -46,6 +54,7 @@ class Router
 			}
 			if ($ok)
 			{
+				self::$executed = true;
 				$arg($par);
 				return true;
 			}

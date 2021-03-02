@@ -2,7 +2,7 @@
 
 namespace models;
 
-class User extends Model
+class AdminUser extends Model
 {
     private $id;
     private $name;
@@ -27,10 +27,13 @@ class User extends Model
 
     public static function select($uid, $pwd)
     {
-        $data = DAO::select("SELECT * FROM `user` WHERE `uid`=? AND `pwd`=?", array($uid, $pwd))->fetch();
+        $data = DAO::select("SELECT * FROM `admin_user` WHERE `uid`=? AND `pwd`=?", array($uid, $pwd));
+        $fdata = $data != null ? $data->fetch() : null;
         $user = null;
-        if ($data != null)
-            $user = new User($data['id'], $data['name'], $data['uid'], $data['pwd']);
+        if ($fdata != null)
+        {
+            $user = new AdminUser($fdata['id'], $fdata['name'], $fdata['uid'], $fdata['pwd']);
+        }
         return $user;
     }
 }

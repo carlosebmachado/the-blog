@@ -2,7 +2,7 @@
 
 namespace models;
 
-class About extends Model
+class AboutInfo extends Model
 {
     private $id;
     private $name;
@@ -27,8 +27,8 @@ class About extends Model
 
     public static function select()
     {
-        $data = DAO::select("SELECT * FROM `about`")->fetch();
-        $about = new About($data['id'], $data['name'], $data['about'], $data['photo']);
+        $data = DAO::select("SELECT * FROM `about_info`")->fetch();
+        $about = new AboutInfo($data['id'], $data['name'], $data['about'], $data['photo']);
         return $about;
     }
 
@@ -38,7 +38,7 @@ class About extends Model
         if ($about != null) $this->about = $about;
         if ($photo != null) $this->photo = $photo;
 
-        $sql = "UPDATE `about` SET `name` = ?, `about` = ?, `photo` = ? WHERE `id` = ?";
+        $sql = "UPDATE `about_info` SET `name` = ?, `about` = ?, `photo` = ? WHERE `id` = ?";
         return DAO::update($sql, array($this->name, $this->about, $this->photo, $this->id));
     }
 }

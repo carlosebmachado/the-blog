@@ -94,8 +94,9 @@ class Application
 			$testController->index();
 		});
 
-		Router::get('?', function() use ($errorController) {
-			$errorController->index();
-		});
+		if (!Router::$executed)
+			Router::get('?', function() use ($errorController) {
+				$errorController->index();
+			});
 	}
 }

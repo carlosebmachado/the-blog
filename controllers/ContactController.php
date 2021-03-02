@@ -12,7 +12,7 @@ class ContactController extends Controller
 			$email = $_POST['email'];
 			$message = $_POST['message'];
 
-			$contact_message =  new \models\ContactMessage(null, $name, $email, $message);
+			$contact_message =  new \models\ContactMessage(null, $name, $email, date('Y-m-d'), $message);
 			$contact_message->insert();
 		}
 

@@ -7,13 +7,15 @@ class ContactMessage extends Model
     private $id;
     private $name;
     private $email;
+    private $date;
     private $message;
 
-    function __construct($id, $name, $email, $message)
+    function __construct($id, $name, $email, $date, $message)
     {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
+        $this->date = $date;
         $this->message = $message;
     }
 
@@ -23,48 +25,50 @@ class ContactMessage extends Model
     public function set_name($name) { $this->name = $name; }
     public function get_email() { return $this->email; }
     public function set_email($email) { $this->email = $email; }
+    public function get_date() { return $this->date; }
+    public function set_date($date) { $this->date = $date; }
     public function get_message() { return $this->message; }
     public function set_message($message) { $this->message = $message; }
 
     public static function select_by_id($id)
     {
-        $data = DAO::select("SELECT * FROM `contact_messages` WHERE `id` = ?", array($id))->fetch();
-        $cm = new ContactMessage($data['id'], $data['name'], $data['email'], $data['message']);
-        return $cm;
+        $data = DAO::select("SELECT * FROM `contact_message` WHERE `id` = ?", array($id))->fetch();
+        $contact_message = new ContactMessage($data['id'], $data['name'], $data['email'], $data['date'], $data['message']);
+        return $contact_message;
     }
 
     public static function select_on_interval($limit, $offset)
     {
-        $data = DAO::select("SELECT * FROM `contact_messages` LIMIT ".$offset.", ".$limit)->fetchAll();
-        $cm = [];
-        foreach($data as $q)
+        $data = DAO::select("SELECT * FROM `contact_message` LIMIT ".$offset.", ".$limit)->fetchAll();
+        $contact_message = [];
+        foreach($data as $d)
         {
-            $a = new ContactMessage($q['id'], $q['name'], $q['email'], $q['message']);
-            array_push($cm, $a);
+            $a = new ContactMessage($d['id'], $d['name'], $d['email'], $d['date'], $d['message']);
+            array_push($contact_message, $a);
         }
-        return $cm;
+        return $contact_message;
     }
 
     public static function select_all()
     {
-        $data = DAO::select("SELECT * FROM `contact_messages`")->fetchAll();
-        $cm = [];
-        foreach($data as $q)
+        $data = DAO::select("SELECT * FROM `contact_message`")->fetchAll();
+        $contact_messages = [];
+        foreach($data as $d)
         {
-            $a = new ContactMessage($q['id'], $q['name'], $q['email'], $q['message']);
-            array_push($cm, $a);
+            $a = new ContactMessage($d['id'], $d['name'], $d['email'], $d['date'], $d['message']);
+            array_push($contact_messages, $a);
         }
-        return $cm;
+        return $contact_messages;
     }
 
     public static function delete_by_id($id)
     {
-        return DAO::select("DELETE FROM `contact_messages` WHERE `id` = ?", array($id));
+        return DAO::select("DELETE FROM `contact_message` WHERE `id` = ?", array($id));
     }
 
     public function insert()
     {
-        $sql = "INSERT INTO `contact_messages` (`id`, `name`, `email`, `message`) VALUES (NULL, ?, ?, ?)";
-        DAO::insert($sql, array($this->name, $this->email, $this->message));
+        $sql = "INSERT INTO `contact_message` (`id`, `name`, `email`, `date`, `message`) VALUES (NULL, ?, ?, ?, ?)";
+        DAO::insert($sql, array($this->name, $this->email, $this->date, $this->message));
     }
 }

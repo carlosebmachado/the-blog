@@ -2,7 +2,7 @@
 
 class Config
 {
-    const BASE_NAME = ROOT_URL;
+    const BASE_NAME = 'blog';
 
     const DB_HOST = 'localhost';
     const DB_NAME = 'blog';

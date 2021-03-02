@@ -12,7 +12,7 @@ class AdminCommentController extends Controller
 		{
 			$id = $_POST['id'];
 
-			\models\Comment::delete_by_id($id);
+			\models\BlogPostCommentary::delete_by_id($id);
 		}
 
 		if (isset($_GET['action']))
