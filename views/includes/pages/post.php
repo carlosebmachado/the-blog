@@ -38,10 +38,10 @@
     foreach ($comments as $comment)
     {
     ?>
-    <div class="mt-5">
+    <div class="row mt-5 bg-light rounded p-3">
         <div class="row">
             <div class="col-md">
-                <p class="title">By <?php echo $comment->get_name() ?> <span><small class="text-muted">on <?php echo $comment->get_post_date() ?></small></span></p>
+                <p class="title"><?php echo $comment->get_name() ?> <span><small class="text-muted">on <?php echo $comment->get_date() ?></small></span></p>
             </div>
         </div>
         <div class="row">
@@ -49,7 +49,7 @@
                 <p class=""><?php echo $comment->get_message() ?></p>
             </div>
         </div>
-        <span class="row border-bottom mx-auto mt-1"></span>
+        <!-- <span class="row border-bottom mx-auto mt-1"></span> -->
     </div>
      <?php
     }
@@ -59,7 +59,7 @@
     Comment form
 -->
 <div class="container w-50 mt-5">
-    <div class="row mt-5">
+    <div class="row mt-5 bg-light rounded p-3">
         <div class="col-md">
             <h2>Leave a commentary:</h2>
             <form method="post" action="">

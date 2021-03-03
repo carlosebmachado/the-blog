@@ -36,7 +36,7 @@
     ?>
                 <tr>
                     <td><?php echo $comment->get_id() ?></td>
-                    <td><?php echo $comment->get_post_date() ?></td>
+                    <td><?php echo $comment->get_date() ?></td>
                     <td><?php echo $comment->get_name() ?></td>
                     <td><?php echo $new_message ?></td>
                     <td>

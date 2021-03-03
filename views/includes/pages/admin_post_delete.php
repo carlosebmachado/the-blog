@@ -19,6 +19,7 @@ if (isset($_POST['find_id']))
         $call_img = $post->get_image();
     }
 }
+$hasphoto = $call_img == '' ? false : true;
 ?>
 <div class="row">
     <div class="col-sm bg-white m-1 p-3 rounded">
@@ -49,8 +50,10 @@ if (isset($_POST['find_id']))
                 <textarea disabled name="body" class="form-control" id="body"><?php echo $body ?></textarea>
             </div>
             <div class="form-group">
-                <label for="call_img">Call image: </label>
+                <label for="call_img">Call image</label>
+                <?php if ($hasphoto) { ?>
                 <img class="mb-3" src="<?php echo 'data:image/jpeg;base64, '.base64_encode($call_img) ?>" style="width: 10%;" alt="About image">
+                <?php } ?>
                 <input disabled type="file" name="call_img" class="form-control-file" id="call_img">
             </div>
             <button type="submit" name="delete" class="btn btn-danger">Delete</button>

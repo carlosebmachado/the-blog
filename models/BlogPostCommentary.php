@@ -81,6 +81,6 @@ class BlogPostCommentary extends Model
         else
             $sql = "INSERT INTO `blog_post_commentary`(`id`, `name`, `message`, `date`, `blog_post_id`) VALUES (".$this->id.", ?, ?, ?, ?)";
 
-        DAO::insert($sql, array($this->name, $this->message, $this->date, $this->blog_post_id));
+        return DAO::insert($sql, array($this->name, $this->message, $this->date, $this->blog_post_id));
     }
 }

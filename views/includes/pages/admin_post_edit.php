@@ -52,7 +52,7 @@ $hasphoto = $call_img == '' ? false : true;
             <div class="form-group">
                 <label for="call_img">Call image</label>
                 <?php if ($hasphoto) { ?>
-                <img class="d-blick mb-3" src="<?php if ($call_img != '') echo 'data:image/jpeg;base64, '.base64_encode($call_img) ?>" style="width: 10%;" alt="About image">
+                <img class="mb-3" src="<?php if ($call_img != '') echo 'data:image/jpeg;base64, '.base64_encode($call_img) ?>" style="width: 10%;" alt="About image">
                 <?php } ?>
                 <input type="file" name="call_img" class="form-control-file" id="call_img">
             </div>

@@ -128,8 +128,7 @@ ALTER TABLE `blog_post`
 --
 ALTER TABLE `blog_post_commentary`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD UNIQUE KEY `fk_blog_post_id` (`blog_post_id`);
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Índices para tabela `contact_message`
@@ -172,15 +171,6 @@ ALTER TABLE `blog_post_commentary`
 ALTER TABLE `contact_message`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
---
--- Restrições para despejos de tabelas
---
-
---
--- Limitadores para a tabela `blog_post_commentary`
---
-ALTER TABLE `blog_post_commentary`
-  ADD CONSTRAINT `fk_post_id` FOREIGN KEY (`blog_post_id`) REFERENCES `blog_post` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
