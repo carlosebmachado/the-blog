@@ -26,10 +26,17 @@ class AdminPostController extends Controller
 			$post_date = $_POST['post_date'];
 			$summary = $_POST['summary'];
 			$body = $_POST['body'];
-			$call_img = $_POST['call_img'];
+			$image_name = '';
+
+			if ($_FILES["image"]["error"] == UPLOAD_ERR_OK)
+			{
+				$tmp_name = $_FILES["image"]["tmp_name"];
+				$image_name = $title.'_'.basename($_FILES["image"]["name"]);
+				move_uploaded_file($tmp_name, '..'.\Config::ABOUT_IMAGE_PATH.$image_name);
+			}
 
 			$article = \models\BlogPost::select_by_id($id);
-			$article->update($title, $post_date, $summary, $body, $call_img);
+			$article->update($title, $post_date, $summary, $body, $image_name);
 		}
 
 		if (isset($_POST['delete']))

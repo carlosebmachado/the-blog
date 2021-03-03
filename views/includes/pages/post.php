@@ -8,7 +8,7 @@
     $blog_post = \models\BlogPost::select_by_id($id);
 
     //$ptPostDate = date("d/m/Y", strtotime($blog_post->get_post_date()));
-    $new_body = str_replace('\r\n', '<br>', $blog_post->get_body());
+    //$new_body = str_replace('\r\n', '</p><p>', $blog_post->get_body());
 
     ?>
     <div class="row">
@@ -19,12 +19,12 @@
     </div>
     <div class="row mt-5">
         <div class="col-md-12">
-            <img class="img-fluid" src="<?php echo 'data:image/jpeg;base64,'.base64_encode($blog_post->get_image()) ?>" alt="Blog call image">
+            <img class="img-fluid" src="<?php echo Config::BLOG_POST_IMAGE_PATH.$blog_post->get_image() ?>" alt="Blog call image">
         </div>
     </div>
     <div class="row mt-5">
         <div class="col-md">
-            <p><?php echo $new_body ?></p>
+            <?php echo $blog_post->get_body() ?>
         </div>
     </div>
 </div>
@@ -39,14 +39,16 @@
     {
     ?>
     <div class="row mt-5 bg-light rounded p-3">
-        <div class="row">
-            <div class="col-md">
-                <p class="title"><?php echo $comment->get_name() ?> <span><small class="text-muted">on <?php echo $comment->get_date() ?></small></span></p>
+        <div class="col">
+            <div class="row">
+                <div class="col-md">
+                    <p><?php echo $comment->get_name() ?> <span><small class="text-muted">on <?php echo $comment->get_date() ?></small></span></p>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md">
-                <p class=""><?php echo $comment->get_message() ?></p>
+            <div class="row">
+                <div class="col-md">
+                    <p><?php echo $comment->get_message() ?></p>
+                </div>
             </div>
         </div>
         <!-- <span class="row border-bottom mx-auto mt-1"></span> -->

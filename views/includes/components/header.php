@@ -11,14 +11,14 @@ $curPage = basename($_SERVER['REQUEST_URI']);
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="Carlos Machado">
-	<link rel="icon" href="/<?php echo Config::BASE_NAME ?>/assets/img/favicons/favicon.ico">
+	<link rel="icon" href="<?php echo Config::BASE_NAME ?>assets/img/favicons/favicon.ico">
 
 	<title>The Blog - Your daily slice of knowledge</title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="/<?php echo Config::BASE_NAME ?>/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?php echo Config::BASE_NAME ?>assets/css/bootstrap.min.css" rel="stylesheet">
 	
-	<link href="/<?php echo Config::BASE_NAME ?>/assets/css/style.css" rel="stylesheet">
+	<link href="<?php echo Config::BASE_NAME ?>assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>

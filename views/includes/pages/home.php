@@ -17,16 +17,15 @@
     foreach ($blog_posts as $blog_post)
     {
     ?>
-    <div class="row mt-4">
-        <div class="col-md-4 contain">
-            <img class="img-fluid"  src="<?php echo 'data:image/jpeg;base64,'.base64_encode($blog_post->get_image()) ?>" alt="Blog call image">
+    <div class="row mt-4 border-bottom">
+        <div class="col-md-4 contain mx-0">
+            <img class="img-fluid"  src="<?php echo Config::BLOG_POST_IMAGE_PATH.$blog_post->get_image() ?>" alt="Blog call image">
         </div>
         <div class="col-md-8">
             <a href="<?php echo 'post?id='.$blog_post->get_id() ?>"><h2><?php echo $blog_post->get_title() ?></h2></a>
             <small class="text-muted"><?php echo $blog_post->get_date() ?></small>
             <p><?php echo $blog_post->get_summary() ?></p>
         </div>
-        <span class="border-bottom mx-auto w-75 mt-1"></span>
     </div>
     <?php
     }

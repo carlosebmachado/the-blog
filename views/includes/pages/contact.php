@@ -1,5 +1,5 @@
 <div class="container w-50 mt-5">
-    <div class="row mt-5">
+    <div class="row mt-5 bg-light rounded p-5">
         <div class="col-md">
             <h2>Contact me:</h2>
             <form method="post">

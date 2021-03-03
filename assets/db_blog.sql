@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Mar-2021 às 11:57
+-- Tempo de geração: 03-Mar-2021 às 13:41
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.1
 
@@ -31,7 +31,7 @@ CREATE TABLE `about_info` (
   `id` tinyint(1) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `about` text NOT NULL,
-  `photo` longblob DEFAULT NULL
+  `photo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `about_info` (
 --
 
 INSERT INTO `about_info` (`id`, `name`, `about`, `photo`) VALUES
-(1, 'Your name', 'Your about text', NULL);
+(1, 'Name', 'About', '');
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE `blog_post` (
   `date` date NOT NULL,
   `summary` varchar(255) NOT NULL,
   `body` text NOT NULL,
-  `image` longblob DEFAULT NULL
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -170,7 +170,6 @@ ALTER TABLE `blog_post_commentary`
 --
 ALTER TABLE `contact_message`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

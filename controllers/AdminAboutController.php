@@ -12,10 +12,17 @@ class AdminAboutController extends Controller
 		{
 			$name = $_POST['name'];
 			$about_text = $_POST['about'];
-			$image = $_POST['image'];
+			$image_name = '';
+
+			if ($_FILES["image"]["error"] == UPLOAD_ERR_OK)
+			{
+				$tmp_name = $_FILES["image"]["tmp_name"];
+				$image_name = $name.'_'.basename($_FILES["image"]["name"]);
+				move_uploaded_file($tmp_name, '..'.\Config::ABOUT_IMAGE_PATH.$image_name);
+			}
 
 			$about = \models\AboutInfo::select();
-			$about->update($name, $about_text, $image);
+			$about->update($name, $about_text, $image_name);
 		}
 
 		if (isset($_GET['action']))

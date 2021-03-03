@@ -4,7 +4,7 @@ $hasphoto = $about_info->get_photo() == '' ? false : true;
 ?>
 <div class="row">
     <div class="col-sm bg-white m-1 p-3 rounded">
-        <form method="post">
+        <form enctype="multipart/form-data" method="POST">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" class="form-control" id="name" value="<?php echo $about_info->get_name() ?>">
@@ -16,7 +16,7 @@ $hasphoto = $about_info->get_photo() == '' ? false : true;
             <div class="form-group">
                 <label for="image">Image: </label>
                 <?php if ($hasphoto) { ?>
-                <img class="mb-3" src="<?php echo 'data:image/jpeg;base64, '.base64_encode($about_info->get_photo()) ?>" style="width: 10%;" alt="About image">
+                <img class="admin-image mb-3" src="<?php echo Config::ABOUT_IMAGE_PATH.$about_info->get_photo() ?>" alt="About image">
                 <?php } ?>
                 <input type="file" name="image" class="form-control-file" id="image">
             </div>
