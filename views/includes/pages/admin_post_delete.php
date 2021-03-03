@@ -50,9 +50,9 @@ $hasphoto = $call_img == '' ? false : true;
                 <textarea disabled name="body" class="form-control" id="body"><?php echo $body ?></textarea>
             </div>
             <div class="form-group">
-                <label for="call_img">Call image</label>
+                <label for="image">Call image</label>
                 <?php if ($hasphoto) { ?>
-                <img class="mb-3" src="<?php echo Config::BLOG_POST_IMAGE_PATH.$call_img ?>" style="width: 10%;" alt="About image">
+                <img class="admin-image mb-3" src="<?php echo Config::BLOG_POST_IMAGE_PATH.$call_img ?>" alt="About image">
                 <?php } ?>
             </div>
             <button type="submit" name="delete" class="btn btn-danger">Delete</button>

@@ -13,9 +13,16 @@ class AdminPostController extends Controller
 			$title = $_POST['title'];
 			$summary = $_POST['summary'];
 			$body = $_POST['body'];
-			$call_img = $_POST['call_img'];
+			$image_name = '';
 
-			$article = new \models\BlogPost(null, $title, date('Y-m-d'), $summary, $body, $call_img);
+			if ($_FILES["image"]["error"] == UPLOAD_ERR_OK)
+			{
+				$tmp_name = $_FILES["image"]["tmp_name"];
+				$image_name = $title.'_'.basename($_FILES["image"]["name"]);
+				move_uploaded_file($tmp_name, '..'.\Config::ABOUT_IMAGE_PATH.$image_name);
+			}
+
+			$article = new \models\BlogPost(null, $title, date('Y-m-d'), $summary, $body, $image_name);
 			$article->insert();
 		}
 

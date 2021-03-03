@@ -23,7 +23,7 @@ $hasphoto = $call_img == '' ? false : true;
 ?>
 <div class="row">
     <div class="col-sm bg-white m-1 p-3 rounded">
-        <form method="post">
+        <form enctype="multipart/form-data" method="POST">
             <div class="form-group">
                 <div class="row">
                     <div class="col">
@@ -50,11 +50,11 @@ $hasphoto = $call_img == '' ? false : true;
                 <textarea name="body" class="form-control" id="body"><?php echo $body ?></textarea>
             </div>
             <div class="form-group">
-                <label for="call_img">Call image</label>
+                <label for="image">Image</label>
                 <?php if ($hasphoto) { ?>
-                <img class="mb-3" src="<?php echo Config::BLOG_POST_IMAGE_PATH.$call_img ?>" style="width: 10%;" alt="About image">
+                <img class="admin-image mb-3" src="<?php echo Config::BLOG_POST_IMAGE_PATH.$call_img ?>" alt="About image">
                 <?php } ?>
-                <input type="file" name="call_img" class="form-control-file" id="call_img">
+                <input type="file" name="image" class="form-control-file" id="image">
             </div>
             <button type="submit" name="edit" class="btn btn-primary">Save</button>
         </form>
