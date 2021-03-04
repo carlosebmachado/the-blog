@@ -41,8 +41,8 @@ $curPage = basename($_SERVER['REQUEST_URI']);
 							<a class="nav-link" href="contact">Contact<?php if ($curPage == 'contact') echo ' <span class="sr-only">(current)</span>' ?></a>
 						</li>
 					</ul>
-					<form class="form-inline my-2 my-lg-0">
-						<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+					<form class="form-inline my-2 my-lg-0" method="GET" action="home">
+						<input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
 					</form>
 				</div>

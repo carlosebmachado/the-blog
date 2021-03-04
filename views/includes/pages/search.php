@@ -3,8 +3,11 @@
     $page_amt = 10;
     $cur_page = 1;
     $offset = 0;
-
-    if (isset($_GET['page']))
+    if(isset($_GET['q']))
+    {
+        
+    }
+    if(isset($_GET['page']))
     {
         $cur_page = (int)$_GET['page'];
         for ($i = 1; $i < $cur_page; $i++)
@@ -12,17 +15,10 @@
             $offset += $page_amt;
         }
     }
+    
+    $results;
 
-    if (isset($_GET['q']))
-    {
-        $blog_posts = \models\BlogPost::select_search_on_interval($page_amt, $offset, $_GET['q']);
-    }
-    else
-    {
-        $blog_posts = \models\BlogPost::select_on_interval($page_amt, $offset);
-    }
-
-    foreach ($blog_posts as $blog_post)
+    foreach ($results as $result)
     {
     ?>
     <div class="row mt-4 border-bottom">
