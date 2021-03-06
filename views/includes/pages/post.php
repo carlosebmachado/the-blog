@@ -35,6 +35,7 @@
     <h2>Comments:</h2>
     <?php
     $comments = \models\BlogPostCommentary::select_by_blog_post_id($id);
+    if ($comments == null) $comments = [];
     foreach ($comments as $comment)
     {
     ?>

@@ -28,12 +28,10 @@ class AdminUser extends Model
     public static function select($uid, $pwd)
     {
         $data = DAO::select("SELECT * FROM `admin_user` WHERE `uid`=? AND `pwd`=?", array($uid, $pwd));
-        $fdata = $data != null ? $data->fetch() : null;
+        if ($data == null) return null;
+        $data = $data[0];
         $user = null;
-        if ($fdata != null)
-        {
-            $user = new AdminUser($fdata['id'], $fdata['name'], $fdata['uid'], $fdata['pwd']);
-        }
+        $user = new AdminUser($data['id'], $data['name'], $data['uid'], $data['pwd']);
         return $user;
     }
 }

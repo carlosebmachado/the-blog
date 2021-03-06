@@ -30,23 +30,23 @@ class BlogPostCommentary extends Model
 
     public static function select_by_id($id)
     {
-        $data = DAO::select("SELECT * FROM `blog_post_commentary` WHERE `id` = ?", array($id))->fetch();
+        $data = DAO::select("SELECT * FROM `blog_post_commentary` WHERE `id`=?", array($id));
+        if ($data == null) return null;
+        $data = $data[0];
         $comment = new BlogPostCommentary($data['id'], $data['name'], $data['message'], $data['date'], $data['blog_post_id']);
         return $comment;
     }
 
     public static function select_on_interval($limit, $offset)
     {
-        $data = DAO::select("SELECT * FROM `blog_post_commentary` LIMIT ".$offset.", ".$limit)->fetchAll();
+        $data = DAO::select("SELECT * FROM `blog_post_commentary` LIMIT ".$offset.", ".$limit);
+        if ($data == null) return null;
         $blog_post_commentary = [];
 
-        if ($data != null)
+        foreach ($data as $cd)
         {
-            foreach ($data as $cd)
-            {
-                $c =  new BlogPostCommentary($cd['id'], $cd['name'], $cd['message'], $cd['date'], $cd['blog_post_id']);
-                array_push($blog_post_commentary, $c);
-            }
+            $c =  new BlogPostCommentary($cd['id'], $cd['name'], $cd['message'], $cd['date'], $cd['blog_post_id']);
+            array_push($blog_post_commentary, $c);
         }
 
         return $blog_post_commentary;
@@ -54,16 +54,14 @@ class BlogPostCommentary extends Model
 
     public static function select_by_blog_post_id($blog_post_id)
     {
-        $data = DAO::select("SELECT * FROM `blog_post_commentary` WHERE `blog_post_id` = ".$blog_post_id)->fetchAll();
+        $data = DAO::select("SELECT * FROM `blog_post_commentary` WHERE `blog_post_id` = ?", array($blog_post_id));
+        if ($data == null) return null;
         $blog_post_commentary = [];
 
-        if ($data != null)
+        foreach ($data as $cd)
         {
-            foreach ($data as $cd)
-            {
-                $c =  new BlogPostCommentary($cd['id'], $cd['name'], $cd['message'], $cd['date'], $cd['blog_post_id']);
-                array_push($blog_post_commentary, $c);
-            }
+            $c =  new BlogPostCommentary($cd['id'], $cd['name'], $cd['message'], $cd['date'], $cd['blog_post_id']);
+            array_push($blog_post_commentary, $c);
         }
 
         return $blog_post_commentary;

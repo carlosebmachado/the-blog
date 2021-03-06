@@ -50,7 +50,7 @@ $hasphoto = $call_img == '' ? false : true;
                 <textarea disabled name="body" class="form-control" id="body"><?php echo $body ?></textarea>
             </div>
             <div class="form-group">
-                <label for="image">Call image</label>
+                <label for="image">Image</label>
                 <?php if ($hasphoto) { ?>
                 <img class="admin-image mb-3" src="<?php echo Config::BLOG_POST_IMAGE_PATH.$call_img ?>" alt="About image">
                 <?php } ?>

@@ -17,6 +17,13 @@ class DAO
         return $pdo;
     }
 
+    /**
+     * Select rows of a specifc table.
+     * 
+     * @param string $columns SQL command.
+     * @param array  $params  All user input parameters to prevent SQLi.
+     * @return array(array)|null
+     */
     public static function select($sql, $params = null)
     {
         try
@@ -25,24 +32,50 @@ class DAO
             $query = $pdo->prepare($sql);
             if ($params != null) $query->execute($params);
             else $query->execute();
+            $data = $query != null ? $query->fetchAll() : null;
         }
         catch (Exception $e)
         {
+            if (\Config::SHOW_ERRORS)
+            {
+                print('DB error: '.$e->getMessage());
+            }
             return null;
         }
-        return $query;
+        return $data;
     }
 
+    /**
+     * Insert a row in a specifc table.
+     * 
+     * @param string $columns SQL command.
+     * @param array  $params  All user input parameters to prevent SQLi.
+     * @return array(array)|null
+     */
     public static function insert($sql, $params = null)
     {
         return self::bool_op($sql, $params);
     }
 
+    /**
+     * Update a row in a specifc table.
+     * 
+     * @param string $columns SQL command.
+     * @param array  $params  All user input parameters to prevent SQLi.
+     * @return array(array)|null
+     */
     public static function update($sql, $params = null)
     {
         return self::bool_op($sql, $params);
     }
 
+    /**
+     * Delete a row in a specifc table.
+     * 
+     * @param string $columns SQL command.
+     * @param array  $params  All user input parameters to prevent SQLi.
+     * @return array(array)|null
+     */
     public static function delete($sql, $params = null)
     {
         return self::bool_op($sql, $params);
@@ -59,6 +92,10 @@ class DAO
         }
         catch (Exception $e)
         {
+            if (\Config::SHOW_ERRORS)
+            {
+                print('DB error: '.$e->getMessage());
+            }
             return false;
         }
         return true;

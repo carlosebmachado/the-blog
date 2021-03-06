@@ -40,19 +40,20 @@ class BlogPost extends Model
 
     public static function select_by_id($id)
     {
-        $data = DAO::select("SELECT * FROM `blog_post` WHERE `id` = ".$id)->fetch();
+        $data = DAO::select("SELECT * FROM `blog_post` WHERE `id`=?", array($id));
+        if ($data == null) return null;
+        $data = $data[0];
         $blog_post = null;
         $comments = BlogPostCommentary::select_by_blog_post_id($id);
-
-        if ($data != null)
-            $blog_post = new BlogPost($data['id'], $data['title'], $data['date'], $data['summary'], $data['body'], $data['image'], $comments);
+        $blog_post = new BlogPost($data['id'], $data['title'], $data['date'], $data['summary'], $data['body'], $data['image'], $comments);
 
         return $blog_post;
     }
 
     public static function select_all()
     {
-        $data = DAO::select("SELECT * FROM `blog_post`")->fetchAll();
+        $data = DAO::select("SELECT * FROM `blog_post`");
+        if ($data == null) return null;
         $blog_posts = [];
         foreach($data as $q)
         {
@@ -76,9 +77,10 @@ class BlogPost extends Model
         {
             $pq .= " `title` LIKE '%".$sq."%' OR ";
         }
-        $pq = substr($pq, 0, strlen($pq) - 4);
+        $pq = substr($pq, 0, strlen($pq) - 5);
         //print("SELECT * FROM `blog_post` WHERE ".$pq." LIMIT ".$offset.", ".$limit);
-        $data = DAO::select("SELECT * FROM `blog_post` WHERE ".$pq." LIMIT ".$offset.", ".$limit)->fetchAll();
+        $data = DAO::select("SELECT * FROM `blog_post` WHERE ".$pq." LIMIT ".$offset.", ".$limit);
+        if ($data == null) return null;
         $blog_posts = [];
         foreach($data as $q)
         {
@@ -91,7 +93,8 @@ class BlogPost extends Model
 
     public static function select_on_interval($limit, $offset)
     {
-        $data = DAO::select("SELECT * FROM `blog_post` LIMIT ".$offset.", ".$limit."")->fetchAll();
+        $data = DAO::select("SELECT * FROM `blog_post` LIMIT ".$offset.", ".$limit."");
+        if ($data == null) return null;
         $blog_posts = [];
         foreach($data as $q)
         {
@@ -114,7 +117,7 @@ class BlogPost extends Model
 
     public static function delete_by_id($id)
     {
-        return DAO::select("DELETE FROM `blog_post` WHERE `id` = ?", array($id));
+        return DAO::delete("DELETE FROM `blog_post` WHERE `id`=?", array($id));
     }
 
     public function update($title = null, $date = null, $summary = null, $body = null, $image = null)
@@ -125,7 +128,7 @@ class BlogPost extends Model
         if ($body != null) $this->body = $body;
         if ($image != null) $this->image = $image;
 
-        $sql = "UPDATE `blog_post` SET `title` = ?, `date` = ?, `summary` = ?, `body` = ?, `image` = ? WHERE `id` = ?";
+        $sql = "UPDATE `blog_post` SET `title`=?, `date`=?, `summary`=?, `body`=?, `image`=? WHERE `id`=?";
         return DAO::update($sql, array($this->title, $this->date, $this->summary, $this->body, $this->image, $this->id));
     }
 }

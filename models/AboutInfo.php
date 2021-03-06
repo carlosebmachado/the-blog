@@ -27,7 +27,7 @@ class AboutInfo extends Model
 
     public static function select()
     {
-        $data = DAO::select("SELECT * FROM `about_info`")->fetch();
+        $data = DAO::select("SELECT * FROM `about_info` WHERE `id`=1")[0];
         $about = new AboutInfo($data['id'], $data['name'], $data['about'], $data['photo']);
         return $about;
     }
@@ -38,7 +38,7 @@ class AboutInfo extends Model
         if ($about != null) $this->about = $about;
         if ($photo != null) $this->photo = $photo;
 
-        $sql = "UPDATE `about_info` SET `name` = ?, `about` = ?, `photo` = ? WHERE `id` = ?";
-        return DAO::update($sql, array($this->name, $this->about, $this->photo, $this->id));
+        $sql = "UPDATE `about_info` SET `name`=?, `about`=?, `photo`=? WHERE `id`=1";
+        return DAO::update($sql, array($this->name, $this->about, $this->photo));
     }
 }
