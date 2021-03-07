@@ -25,14 +25,16 @@ else
 </head>
 
 <body>
-    <header class="dashboard-header navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand px-3" target="_blank" href="/blog">The Blog</a>
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap"><a class="nav-link" href="?logout">Sign out</a></li>
+    <header class="dashboard-header bg-dark shadow">
+        <div class="logo-bg text-center">
+            <a class="text-white m-0" target="_blank" href="/blog">The Blog</a>
+        </div>
+        <ul class="list-unstyled float-right m-0">
+            <li class=""><a class="text-white" href="?logout">Sign out</a></li>
         </ul>
     </header>
 
-    <nav class="dashboard-side-menu bg-dark d-inline-block">
+    <nav class="dashboard-side-menu bg-dark d-inline-block mt-0">
         <div class="position-sticky pt-3">
             <ul class="nav flex-column">
                 <li class="nav-item m-0 p-0">

@@ -12,12 +12,31 @@ textarea {
 }
 
 .dashboard-header {
+    width: calc(100% - 200px);
     height: 5%;
+    position: fixed;
+    top: 0;
+    left: 200px;
+    z-index: 1;
 }
 
+.logo-bg {
+    width: 200px;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #262b30;
+}
+
+.logo-bg a {
+    margin-top: 20%;
+}
+
+/* 
 .dashboard-content {
     height: 95%;
 }
+*/
 
 .dashboard-side-menu {
     width: 200px;
@@ -44,4 +63,19 @@ textarea {
 
 .admin-image {
     width: 10%;
+}
+
+@media (max-width: 780px) {
+    .dashboard-side-menu {
+        width: 100%;
+        position: relative;
+        height: auto;
+        margin-top: 0;
+    }
+    
+    .dashboard-wrapper {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
 }

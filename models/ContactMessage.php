@@ -65,6 +65,11 @@ class ContactMessage extends Model
         return $contact_messages;
     }
 
+    public static function count()
+    {
+        return DAO::select("SELECT COUNT(*) FROM `contact_message`")[0][0];
+    }
+
     public static function delete_by_id($id)
     {
         return DAO::select("DELETE FROM `contact_message` WHERE `id`=?", array($id));

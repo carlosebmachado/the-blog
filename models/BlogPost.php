@@ -105,6 +105,11 @@ class BlogPost extends Model
         return $blog_posts;
     }
 
+    public static function count()
+    {
+        return DAO::select("SELECT COUNT(*) FROM `blog_post`")[0][0];
+    }
+
     public function insert()
     {
         if($this->id == null)

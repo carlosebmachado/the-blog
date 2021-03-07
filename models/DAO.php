@@ -18,11 +18,23 @@ class DAO
     }
 
     /**
+     * General SQL commands.
+     * 
+     * @param string $columns SQL command.
+     * @param array  $params  All user input parameters to prevent SQLi.
+     * @return mixed
+     */
+    public static function general($sql, $params = null)
+    {
+        return self::select($sql, $params);
+    }
+
+    /**
      * Select rows of a specifc table.
      * 
      * @param string $columns SQL command.
      * @param array  $params  All user input parameters to prevent SQLi.
-     * @return array(array)|null
+     * @return mixed
      */
     public static function select($sql, $params = null)
     {
@@ -50,7 +62,7 @@ class DAO
      * 
      * @param string $columns SQL command.
      * @param array  $params  All user input parameters to prevent SQLi.
-     * @return array(array)|null
+     * @return bool
      */
     public static function insert($sql, $params = null)
     {
@@ -62,7 +74,7 @@ class DAO
      * 
      * @param string $columns SQL command.
      * @param array  $params  All user input parameters to prevent SQLi.
-     * @return array(array)|null
+     * @return bool
      */
     public static function update($sql, $params = null)
     {
@@ -74,7 +86,7 @@ class DAO
      * 
      * @param string $columns SQL command.
      * @param array  $params  All user input parameters to prevent SQLi.
-     * @return array(array)|null
+     * @return bool
      */
     public static function delete($sql, $params = null)
     {

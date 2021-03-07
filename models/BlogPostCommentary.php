@@ -72,6 +72,11 @@ class BlogPostCommentary extends Model
         return DAO::select("DELETE FROM `blog_post_commentary` WHERE `id` = ?", array($id));
     }
 
+    public static function count()
+    {
+        return DAO::select("SELECT COUNT(*) FROM `blog_post_commentary`")[0][0];
+    }
+
     public function insert()
     {
         if ($this->id == null)
