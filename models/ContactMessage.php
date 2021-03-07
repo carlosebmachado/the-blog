@@ -42,7 +42,7 @@ class ContactMessage extends Model
     public static function select_on_interval($limit, $offset)
     {
         $data = DAO::select("SELECT * FROM `contact_message` LIMIT ".$offset.", ".$limit);
-        if ($data == null) return null;
+        if ($data == null) return [];
         $contact_message = [];
         foreach($data as $d)
         {
@@ -55,7 +55,7 @@ class ContactMessage extends Model
     public static function select_all()
     {
         $data = DAO::select("SELECT * FROM `contact_message`");
-        if ($data == null) return null;
+        if ($data == null) return [];
         $contact_messages = [];
         foreach($data as $d)
         {

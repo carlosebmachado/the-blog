@@ -40,7 +40,7 @@ class BlogPostCommentary extends Model
     public static function select_on_interval($limit, $offset)
     {
         $data = DAO::select("SELECT * FROM `blog_post_commentary` LIMIT ".$offset.", ".$limit);
-        if ($data == null) return null;
+        if ($data == null) return [];
         $blog_post_commentary = [];
 
         foreach ($data as $cd)
@@ -55,7 +55,7 @@ class BlogPostCommentary extends Model
     public static function select_by_blog_post_id($blog_post_id)
     {
         $data = DAO::select("SELECT * FROM `blog_post_commentary` WHERE `blog_post_id` = ?", array($blog_post_id));
-        if ($data == null) return null;
+        if ($data == null) return [];
         $blog_post_commentary = [];
 
         foreach ($data as $cd)

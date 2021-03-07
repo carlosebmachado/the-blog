@@ -7,7 +7,7 @@ else
 ?>
 
 <!doctype html>
-<html class="h-100" lang="en">
+<html lang="en">
 
 <head>
 	<meta charset="utf-8">
@@ -24,46 +24,43 @@ else
 	<link href="<?php echo Config::BASE_NAME ?>assets/css/style.css" rel="stylesheet">
 </head>
 
-<body class="h-100">
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" style="height: 5%;">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">The Blog</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+<body>
+    <header class="dashboard-header navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand px-3" target="_blank" href="/blog">The Blog</a>
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap"><a class="nav-link" href="?logout">Sign out</a></li>
         </ul>
     </header>
 
-    <div class="container-fluid" style="height: 95%;">
-        <div class="row h-100">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 bg-dark collapse h-100 d-inline-block">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="../admin/dashboard"><h5>Dashboard</h5></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="../admin/about?action=edit"><h5>About</h5></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white mb-0 pb-0" href="../admin/posts?action=list"><h5>Posts</h5></a>
-                            <a class="nav-link text-white my-0 py-0" href="../admin/posts?action=new">New</a>
-                            <a class="nav-link text-white my-0 py-0" href="../admin/posts?action=edit">Edit</a>
-                            <a class="nav-link text-white mt-0 pt-0" href="../admin/posts?action=delete">Delete</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white mb-0 pb-0" href="../admin/commentaries?action=list"><h5>Commentaries</h5></a>
-                            <a class="nav-link text-white mt-0 pt-0" href="../admin/commentaries?action=delete">Delete</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white mb-0 pb-0" href="../admin/messages?action=list"><h5>Messages</h5></a>
-                            <a class="nav-link text-white mt-0 pt-0" href="../admin/messages?action=delete">Delete</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    <nav class="dashboard-side-menu bg-dark d-inline-block">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Dashboard') echo ' selected' ?>" href="../admin/dashboard"><h5>Dashboard</h5></a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'About - Edit') echo ' selected' ?>" href="../admin/about?action=edit"><h5>About</h5></a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Posts - List') echo ' selected' ?>" href="../admin/posts?action=list"><h5>Posts</h5></a>
+                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Posts - New') echo ' selected' ?>" href="../admin/posts?action=new">New</a>
+                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Posts - Edit') echo ' selected' ?>" href="../admin/posts?action=edit">Edit</a>
+                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Posts - Delete') echo ' selected' ?>" href="../admin/posts?action=delete">Delete</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Commentaries - List') echo ' selected' ?>" href="../admin/commentaries?action=list"><h5>Commentaries</h5></a>
+                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Commentaries - Delete') echo ' selected' ?>" href="../admin/commentaries?action=delete">Delete</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Messages - List') echo ' selected' ?>" href="../admin/messages?action=list"><h5>Messages</h5></a>
+                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Messages - Delete') echo ' selected' ?>" href="../admin/messages?action=delete">Delete</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-light h-100">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                    <h1 class="h2"><?php echo $pageName ?></h1>
-                </div>
+    <main class="dashboard-wrapper bg-light">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3">
+            <h2><?php echo $pageName ?></h2>
+        </div>
 

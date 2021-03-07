@@ -1,6 +1,11 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
 $curPage = basename($_SERVER['REQUEST_URI']);
+$q = '';
+if (isset($_GET['q']))
+{
+	$q = $_GET['q'];
+}
 ?>
 
 <!doctype html>
@@ -42,7 +47,7 @@ $curPage = basename($_SERVER['REQUEST_URI']);
 						</li>
 					</ul>
 					<form class="form-inline my-2 my-lg-0" method="GET" action="home">
-						<input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+						<input class="form-control mr-sm-2" name="q" value="<?php echo $q ?>" type="search" placeholder="Search" aria-label="Search" id="search-box">
 						<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
 					</form>
 				</div>

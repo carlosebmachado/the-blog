@@ -53,7 +53,7 @@ class BlogPost extends Model
     public static function select_all()
     {
         $data = DAO::select("SELECT * FROM `blog_post`");
-        if ($data == null) return null;
+        if ($data == null) return [];
         $blog_posts = [];
         foreach($data as $q)
         {
@@ -77,10 +77,10 @@ class BlogPost extends Model
         {
             $pq .= " `title` LIKE '%".$sq."%' OR ";
         }
-        $pq = substr($pq, 0, strlen($pq) - 5);
+        $pq = substr($pq, 0, strlen($pq) - 4);
         //print("SELECT * FROM `blog_post` WHERE ".$pq." LIMIT ".$offset.", ".$limit);
         $data = DAO::select("SELECT * FROM `blog_post` WHERE ".$pq." LIMIT ".$offset.", ".$limit);
-        if ($data == null) return null;
+        if ($data == null) return [];
         $blog_posts = [];
         foreach($data as $q)
         {
@@ -94,7 +94,7 @@ class BlogPost extends Model
     public static function select_on_interval($limit, $offset)
     {
         $data = DAO::select("SELECT * FROM `blog_post` LIMIT ".$offset.", ".$limit."");
-        if ($data == null) return null;
+        if ($data == null) return [];
         $blog_posts = [];
         foreach($data as $q)
         {
