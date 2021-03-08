@@ -45,19 +45,25 @@ else
                 </li>
                 <li class="nav-item m-0 p-0">
                     <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Posts - List') echo ' selected' ?>" href="../admin/posts?action=list"><h5>Posts</h5></a>
+                    <?php if (substr($pageName, 0, 5) == 'Posts') { ?>
                     <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Posts - New') echo ' selected' ?>" href="../admin/posts?action=new">New</a>
                     <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Posts - Edit') echo ' selected' ?>" href="../admin/posts?action=edit">Edit</a>
                     <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Posts - Delete') echo ' selected' ?>" href="../admin/posts?action=delete">Delete</a>
+                    <?php } ?>
                 </li>
                 <li class="nav-item m-0 p-0">
                     <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Commentaries - List') echo ' selected' ?>" href="../admin/commentaries?action=list"><h5>Commentaries</h5></a>
+                    <?php if (substr($pageName, 0, 12) == 'Commentaries') { ?>
                     <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Commentaries - View') echo ' selected' ?>" href="../admin/commentaries?action=view">View</a>
                     <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Commentaries - Delete') echo ' selected' ?>" href="../admin/commentaries?action=delete">Delete</a>
+                    <?php } ?>
                 </li>
                 <li class="nav-item m-0 p-0">
                     <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Messages - List') echo ' selected' ?>" href="../admin/messages?action=list"><h5>Messages</h5></a>
+                    <?php if (substr($pageName, 0, 8) == 'Messages') { ?>
                     <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Messages - View') echo ' selected' ?>" href="../admin/messages?action=view">View</a>
                     <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Messages - Delete') echo ' selected' ?>" href="../admin/messages?action=delete">Delete</a>
+                    <?php } ?>
                 </li>
             </ul>
         </div>

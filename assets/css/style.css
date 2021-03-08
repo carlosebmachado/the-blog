@@ -11,8 +11,12 @@ textarea.summary {
     height: 80px !important;
 }
 
+/* .bg-ldark {
+    background-color: #5b6269 !important;
+} */
+
 .selected {
-    background-color: #444c53;
+    background-color: #444c53 !important;
 }
 
 .dashboard-header {
