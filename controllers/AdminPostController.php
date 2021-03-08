@@ -19,7 +19,7 @@ class AdminPostController extends Controller
 			{
 				$tmp_name = $_FILES["image"]["tmp_name"];
 				$image_name = $title.'_'.basename($_FILES["image"]["name"]);
-				move_uploaded_file($tmp_name, '..'.\Config::ABOUT_IMAGE_PATH.$image_name);
+				move_uploaded_file($tmp_name, '..'.\Config::BLOG_POST_IMAGE_PATH.$image_name);
 			}
 
 			$article = new \models\BlogPost(null, $title, date('Y-m-d'), $summary, $body, $image_name);
@@ -39,7 +39,7 @@ class AdminPostController extends Controller
 			{
 				$tmp_name = $_FILES["image"]["tmp_name"];
 				$image_name = $title.'_'.basename($_FILES["image"]["name"]);
-				move_uploaded_file($tmp_name, '..'.\Config::ABOUT_IMAGE_PATH.$image_name);
+				move_uploaded_file($tmp_name, '..'.\Config::BLOG_POST_IMAGE_PATH.$image_name);
 			}
 
 			$article = \models\BlogPost::select_by_id($id);
