@@ -43,7 +43,7 @@ $hasphoto = $call_img == '' ? false : true;
             </div>
             <div class="form-group">
                 <label for="summary">Summary</label>
-                <textarea name="summary" class="form-control" id="summary"><?php echo $summary ?></textarea>
+                <textarea name="summary" class="form-control summary" id="summary"><?php echo $summary ?></textarea>
             </div>
             <div class="form-group">
                 <label for="body">Body</label>
