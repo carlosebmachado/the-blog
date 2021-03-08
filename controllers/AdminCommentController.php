@@ -23,6 +23,9 @@ class AdminCommentController extends Controller
 				case 'list':
 					\views\View::render('admin_comment_list.php', 'dashboard_header.php', 'dashboard_footer.php');
 					break;
+				case 'view':
+					\views\View::render('admin_comment_view.php', 'dashboard_header.php', 'dashboard_footer.php');
+					break;
 				case 'delete':
 					\views\View::render('admin_comment_delete.php', 'dashboard_header.php', 'dashboard_footer.php');
 					break;

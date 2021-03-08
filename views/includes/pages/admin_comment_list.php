@@ -7,6 +7,7 @@
                     <th scope="col">Post Date</th>
                     <th scope="col">Name</th>
                     <th scope="col">Message</th>
+                    <th scope="col">View</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
@@ -39,6 +40,12 @@
                     <td><?php echo $comment->get_date() ?></td>
                     <td><?php echo $comment->get_name() ?></td>
                     <td><?php echo $new_message ?></td>
+                    <td>
+                    <form action="../admin/commentaries?action=view" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $comment->get_id() ?>">
+                        <button name="find_id" class="btn btn-info">View</button>
+                    </form>
+                    </td>
                     <td>
                     <form action="../admin/commentaries?action=delete" method="POST">
                         <input type="hidden" name="id" value="<?php echo $comment->get_id() ?>">

@@ -7,6 +7,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Message</th>
+                    <th scope="col">View</th>
                     <th scope="col">Delete</th>
                 </tr>
             </thead>
@@ -39,6 +40,12 @@
                     <td><?php echo $cm->get_name() ?></td>
                     <td><?php echo $cm->get_email() ?></td>
                     <td><?php echo $new_message ?></td>
+                    <td>
+                    <form action="../admin/messages?action=view" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $cm->get_id() ?>">
+                        <button name="find_id" class="btn btn-info">View</button>
+                    </form>
+                    </td>
                     <td>
                     <form action="../admin/messages?action=delete" method="POST">
                         <input type="hidden" name="id" value="<?php echo $cm->get_id() ?>">

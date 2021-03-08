@@ -35,7 +35,7 @@ else
     </header>
 
     <nav class="dashboard-side-menu bg-dark d-inline-block mt-0">
-        <div class="position-sticky pt-3">
+        <div class="position-sticky">
             <ul class="nav flex-column">
                 <li class="nav-item m-0 p-0">
                     <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Dashboard') echo ' selected' ?>" href="../admin/dashboard"><h5>Dashboard</h5></a>
@@ -51,10 +51,12 @@ else
                 </li>
                 <li class="nav-item m-0 p-0">
                     <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Commentaries - List') echo ' selected' ?>" href="../admin/commentaries?action=list"><h5>Commentaries</h5></a>
+                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Commentaries - View') echo ' selected' ?>" href="../admin/commentaries?action=view">View</a>
                     <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Commentaries - Delete') echo ' selected' ?>" href="../admin/commentaries?action=delete">Delete</a>
                 </li>
                 <li class="nav-item m-0 p-0">
                     <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Messages - List') echo ' selected' ?>" href="../admin/messages?action=list"><h5>Messages</h5></a>
+                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Messages - View') echo ' selected' ?>" href="../admin/messages?action=view">View</a>
                     <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Messages - Delete') echo ' selected' ?>" href="../admin/messages?action=delete">Delete</a>
                 </li>
             </ul>
