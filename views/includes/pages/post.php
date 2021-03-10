@@ -32,7 +32,7 @@
     Comments
  -->
 <div class="container w-50 mt-5">
-    <h2>Comments:</h2>
+    <h3>Comments:</h3>
     <?php
     $comments = \models\BlogPostCommentary::select_by_blog_post_id($id);
     foreach ($comments as $comment)
