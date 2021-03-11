@@ -4,7 +4,7 @@ class Router
 {
 	public static $executed;
 
-	public static function isExecuted()
+	public static function executed()
 	{
 		return self::$executed;
 	}

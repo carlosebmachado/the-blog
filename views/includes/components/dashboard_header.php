@@ -26,10 +26,10 @@ else
 
 <body>
     <header class="dashboard-header bg-dark shadow">
-        <div class="logo-bg text-center">
-            <a class="text-white m-0" target="_blank" href="/blog">The Blog</a>
+        <div class="logo-bg">
+            <a class="text-white" target="_blank" href="/blog">The Blog</a>
         </div>
-        <ul class="list-unstyled float-right m-0">
+        <ul class="list-unstyled float-right">
             <li class=""><a class="text-white" href="?logout">Sign out</a></li>
         </ul>
     </header>
