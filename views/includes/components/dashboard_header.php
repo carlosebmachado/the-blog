@@ -38,31 +38,31 @@ else
         <div class="position-sticky">
             <ul class="nav flex-column">
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Dashboard') echo ' selected' ?>" href="../admin/dashboard"><h5><i class="fas fa-home"></i> Dashboard</h5></a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Dashboard') echo ' selected' ?>" href="../admin/dashboard"><i class="fas fa-home"></i> Dashboard</a>
                 </li>
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'About - Edit') echo ' selected' ?>" href="../admin/about?action=edit"><h5><i class="fas fa-info-circle"></i> About</h5></a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'About - Edit') echo ' selected' ?>" href="../admin/about?action=edit"><i class="fas fa-info-circle"></i> About</a>
                 </li>
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Posts - List') echo ' selected' ?>" href="../admin/posts?action=list"><h5><i class="fas fa-newspaper"></i> Posts</h5></a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Posts - List') echo ' selected' ?>" href="../admin/posts?action=list"><i class="fas fa-newspaper"></i> Posts</a>
                     <?php if (substr($pageName, 0, 5) == 'Posts') { ?>
-                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Posts - New') echo ' selected' ?>" href="../admin/posts?action=new">New</a>
-                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Posts - Edit') echo ' selected' ?>" href="../admin/posts?action=edit">Edit</a>
-                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Posts - Delete') echo ' selected' ?>" href="../admin/posts?action=delete">Delete</a>
+                    <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Posts - New') echo ' selected-sub' ?>" href="../admin/posts?action=new">New</a>
+                    <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Posts - Edit') echo ' selected-sub' ?>" href="../admin/posts?action=edit">Edit</a>
+                    <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Posts - Delete') echo ' selected-sub' ?>" href="../admin/posts?action=delete">Delete</a>
                     <?php } ?>
                 </li>
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Commentaries - List') echo ' selected' ?>" href="../admin/commentaries?action=list"><h5><i class="fab fa-microblog"></i> Commentaries</h5></a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Commentaries - List') echo ' selected' ?>" href="../admin/commentaries?action=list"><i class="fab fa-microblog"></i> Commentaries</a>
                     <?php if (substr($pageName, 0, 12) == 'Commentaries') { ?>
-                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Commentaries - View') echo ' selected' ?>" href="../admin/commentaries?action=view">View</a>
-                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Commentaries - Delete') echo ' selected' ?>" href="../admin/commentaries?action=delete">Delete</a>
+                    <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Commentaries - View') echo ' selected-sub' ?>" href="../admin/commentaries?action=view">View</a>
+                    <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Commentaries - Delete') echo ' selected-sub' ?>" href="../admin/commentaries?action=delete">Delete</a>
                     <?php } ?>
                 </li>
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Messages - List') echo ' selected' ?>" href="../admin/messages?action=list"><h5><i class="fas fa-envelope-square"></i> Messages</h5></a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Messages - List') echo ' selected' ?>" href="../admin/messages?action=list"><i class="fas fa-envelope-square"></i> Messages</a>
                     <?php if (substr($pageName, 0, 8) == 'Messages') { ?>
-                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Messages - View') echo ' selected' ?>" href="../admin/messages?action=view">View</a>
-                    <a class="nav-link text-white m-0 py-1 px-4<?php if ($pageName == 'Messages - Delete') echo ' selected' ?>" href="../admin/messages?action=delete">Delete</a>
+                    <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Messages - View') echo ' selected-sub' ?>" href="../admin/messages?action=view">View</a>
+                    <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Messages - Delete') echo ' selected-sub' ?>" href="../admin/messages?action=delete">Delete</a>
                     <?php } ?>
                 </li>
             </ul>

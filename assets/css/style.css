@@ -19,6 +19,10 @@ textarea.summary {
     background-color: #444c53 !important;
 }
 
+.selected-sub {
+    background-color: #d2d9e0 !important;
+}
+
 .dashboard-header {
     width: 100%;
     height: 30px;

@@ -20,8 +20,8 @@ $hasphoto = $about_info->get_photo() == '' ? false : true;
                 <?php } ?>
                 <input type="file" name="image" class="form-control-file" id="image">
             </div>
-            <button type="submit" name="save" class="btn btn-primary">Save</button>
             <a class="btn btn-info" href="<?php echo \Config::BASE_NAME.'about' ?>" target="_blanc">View</a>
+            <button class="btn btn-primary" type="submit" name="save">Save</button>
         </form>
     </div>
 </div>
