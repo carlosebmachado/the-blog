@@ -17,7 +17,7 @@ $curPage = basename($_SERVER['REQUEST_URI']);
 
 	<!-- Bootstrap core CSS -->
 	<link href="<?php echo Config::BASE_NAME ?>assets/css/bootstrap.min.css" rel="stylesheet">
-	
+    <link href="<?php echo Config::BASE_NAME ?>assets/css/all.css" rel="stylesheet">
 	<link href="<?php echo Config::BASE_NAME ?>assets/css/style.css" rel="stylesheet">
 </head>
 
