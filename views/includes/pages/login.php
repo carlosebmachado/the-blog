@@ -15,6 +15,6 @@
 			unset($_SESSION['ERR']);
 		}
 		?>
-		<button type="submit" name="verify_login" class="btn btn-primary">Login</button>
+		<button class="btn btn-primary w-100" type="submit" name="verify_login">Login</button>
 	</form>
 </div>

@@ -7,6 +7,12 @@
     $id = isset($_GET['id']) ? $_GET['id'] : 0;
     $blog_post = \models\BlogPost::select_by_id($id);
 
+    if ($blog_post == null)
+    {
+        header('Location: '.\Config::BASE_NAME.'error');
+        die();
+    }
+
     //$ptPostDate = date("d/m/Y", strtotime($blog_post->get_post_date()));
     //$new_body = str_replace('\r\n', '</p><p>', $blog_post->get_body());
 

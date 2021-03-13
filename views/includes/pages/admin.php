@@ -29,7 +29,7 @@ $comments_average = round($comments_count / $posts_count, 2);
     <div class="col-sm bg-white m-1 p-3 rounded">
         <h5>Metrics</h5>
         <div class="mt-4">
-            <h6>Most popular post: <a href="#">The Day A Llama Run Over Me In A Water Park</a></h6>
+            <h6>Most popular post: <a href="<?php echo \Config::BASE_NAME.'post?id=1' ?>" target="_blanc">The Day A Llama Run Over Me In A Water Park</a></h6>
             <h6>Time the user spent on the site: 5min</h6>
             <h6>Daily visits count: 23</h6>
             <h6>Week visits count: 174</h6>

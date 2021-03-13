@@ -25,8 +25,8 @@ $curPage = basename($_SERVER['REQUEST_URI']);
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
-				<a class="navbar-brand" href="../home">The Blog</a>
-				<a class="navbar-text" href="#">Admin</a>
+				<a class="navbar-brand" href="../home" target="_blanc">The Blog</a>
+				<span class="navbar-text">ADMIN</span>
 			</div>
 		</nav>
 	</header>

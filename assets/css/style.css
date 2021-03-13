@@ -43,9 +43,9 @@ textarea.summary {
     text-align: center;
 }
 
-/* .logo-bg a {
-
-} */
+.logo-bg > a:hover, ul li a:hover {
+    text-decoration: none;
+}
 
 /* 
 .dashboard-content {

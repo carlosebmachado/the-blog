@@ -7,6 +7,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Post Date</th>
                     <th scope="col">Summary</th>
+                    <th scope="col">View</th>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
                 </tr>
@@ -40,6 +41,9 @@
                     <td><?php echo $blog_post->get_title() ?></td>
                     <td><?php echo $blog_post->get_date() ?></td>
                     <td><?php echo $new_summary ?></td>
+                    <td>
+                        <a class="btn btn-info" href="<?php echo \Config::BASE_NAME.'post?id='.$blog_post->get_id() ?>" target="_blanc">View</a>
+                    </td>
                     <td>
                     <form action="../admin/posts?action=edit" method="POST">
                         <input type="hidden" name="id" value="<?php echo $blog_post->get_id() ?>">

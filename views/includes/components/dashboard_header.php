@@ -26,7 +26,7 @@ else
 
 <body>
     <header class="dashboard-header bg-dark shadow">
-        <div class="logo-bg">
+        <div class="logo-bg text-center">
             <a class="text-white" target="_blank" href="/blog">The Blog</a>
         </div>
         <ul class="list-unstyled float-right">
