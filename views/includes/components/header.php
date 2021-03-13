@@ -36,7 +36,7 @@ if (isset($_GET['q']))
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item<?php if ($curPage == Config::BASE_NAME || $curPage == 'home') echo ' active' ?>">
+						<li class="nav-item<?php if ($curPage == substr(Config::BASE_NAME, 1, 4) || $curPage == 'home') echo ' active' ?>">
 							<a class="nav-link" href="home">Home<?php if ($curPage == Config::BASE_NAME || $curPage == 'home') echo ' <span class="sr-only">(current)</span>' ?></a>
 						</li>
 						<li class="nav-item<?php if ($curPage == 'about') echo ' active' ?>">
