@@ -16,6 +16,6 @@ class ContactController extends Controller
 			$contact_message->insert();
 		}
 
-		\views\ContactView::render('contact.php');
+		\views\View::render('contact.php');
 	}
 }

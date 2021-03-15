@@ -25,12 +25,12 @@ else
 </head>
 
 <body>
-    <header class="dashboard-header bg-dark shadow">
+    <header class="dashboard-header">
         <div class="logo-bg text-center">
             <a class="text-white" target="_blank" href="/blog">The Blog</a>
         </div>
-        <ul class="list-unstyled float-right">
-            <li class=""><a class="text-white" href="?logout">Sign out</a></li>
+        <ul class="list-unstyled d-inline-block mb-0">
+            <li class=""><a class="text-dark" href="?logout">Sign out</a></li>
         </ul>
     </header>
 
@@ -38,13 +38,13 @@ else
         <div class="position-sticky">
             <ul class="nav flex-column">
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Dashboard') echo ' selected' ?>" href="../admin/dashboard"><i class="fas fa-home"></i> Dashboard</a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Dashboard') echo ' selected' ?>" href="../admin/dashboard"><i class="fas fa-home"></i>Dashboard</a>
                 </li>
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'About - Edit') echo ' selected' ?>" href="../admin/about?action=edit"><i class="fas fa-info-circle"></i> About</a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'About - Edit') echo ' selected' ?>" href="../admin/about?action=edit"><i class="fas fa-info-circle"></i>About</a>
                 </li>
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Posts - List') echo ' selected' ?>" href="../admin/posts?action=list"><i class="fas fa-newspaper"></i> Posts</a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Posts - List') echo ' selected' ?>" href="../admin/posts?action=list"><i class="fas fa-newspaper"></i>Posts</a>
                     <?php if (substr($pageName, 0, 5) == 'Posts') { ?>
                     <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Posts - New') echo ' selected-sub' ?>" href="../admin/posts?action=new">New</a>
                     <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Posts - Edit') echo ' selected-sub' ?>" href="../admin/posts?action=edit">Edit</a>
@@ -52,14 +52,14 @@ else
                     <?php } ?>
                 </li>
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Commentaries - List') echo ' selected' ?>" href="../admin/commentaries?action=list"><i class="fab fa-microblog"></i> Commentaries</a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Commentaries - List') echo ' selected' ?>" href="../admin/commentaries?action=list"><i class="fab fa-microblog"></i>Commentaries</a>
                     <?php if (substr($pageName, 0, 12) == 'Commentaries') { ?>
                     <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Commentaries - View') echo ' selected-sub' ?>" href="../admin/commentaries?action=view">View</a>
                     <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Commentaries - Delete') echo ' selected-sub' ?>" href="../admin/commentaries?action=delete">Delete</a>
                     <?php } ?>
                 </li>
                 <li class="nav-item m-0 p-0">
-                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Messages - List') echo ' selected' ?>" href="../admin/messages?action=list"><i class="fas fa-envelope-square"></i> Messages</a>
+                    <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Messages - List') echo ' selected' ?>" href="../admin/messages?action=list"><i class="fas fa-envelope-square"></i>Messages</a>
                     <?php if (substr($pageName, 0, 8) == 'Messages') { ?>
                     <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Messages - View') echo ' selected-sub' ?>" href="../admin/messages?action=view">View</a>
                     <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Messages - Delete') echo ' selected-sub' ?>" href="../admin/messages?action=delete">Delete</a>

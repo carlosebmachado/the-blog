@@ -6,6 +6,6 @@ class HomeController extends Controller
 {
 	public function index()
 	{
-		\views\HomeView::render('home.php');
+		\views\View::render('home.php');
 	}
 }

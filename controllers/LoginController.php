@@ -11,6 +11,6 @@ class LoginController extends Controller
 			\models\Login::virify_login($_POST['uid'], $_POST['pwd']);
 		}
 
-		\views\LoginView::render('login.php', 'login_header.php', 'login_footer.php');
+		\views\View::render('login.php', 'login_header.php', 'login_footer.php');
 	}
 }

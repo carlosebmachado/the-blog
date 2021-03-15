@@ -11,10 +11,6 @@ textarea.summary {
     height: 80px !important;
 }
 
-/* .bg-ldark {
-    background-color: #5b6269 !important;
-} */
-
 .selected {
     background-color: #444c53 !important;
 }
@@ -23,16 +19,28 @@ textarea.summary {
     background-color: #d2d9e0 !important;
 }
 
+.fas, .fab {
+    width: 22px;
+    text-align: center;
+    margin-right: 5px;
+    box-shadow: #262b30;
+}
+
 .dashboard-header {
     width: 100%;
     height: 30px;
     position: fixed;
+    background-color: white;
     top: 0;
     left: 0;
     z-index: 1;
+    
+    -webkit-box-shadow: 0px -3px 7px 4px rgba(0,0,0,0.14);
+    -moz-box-shadow: 0px -3px 7px 4px rgba(0,0,0,0.14);
+    box-shadow: 0px -3px 7px 4px rgba(0,0,0,0.14);
 }
 
-.dashboard-header li > a {
+.dashboard-header li {
     position: absolute;
     right: 2%;
     top: 5%;
@@ -50,12 +58,6 @@ textarea.summary {
 .logo-bg > a:hover, ul li a:hover {
     text-decoration: none;
 }
-
-/* 
-.dashboard-content {
-    height: 95%;
-}
-*/
 
 .dashboard-side-menu {
     width: 200px;

@@ -6,6 +6,6 @@ class AboutController extends Controller
 {
 	public function index()
 	{
-		\views\AboutView::render('about.php');
+		\views\View::render('about.php');
 	}
 }

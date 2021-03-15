@@ -16,6 +16,6 @@ class PostController extends Controller
 			$comment->insert();
 		}
 
-		\views\PostView::render('post.php');
+		\views\View::render('post.php');
 	}
 }
