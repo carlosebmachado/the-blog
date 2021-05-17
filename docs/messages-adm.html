@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="Carlos Machado">
+	<link rel="icon" href="assets/img/favicons/favicon.ico">
+
+	<title>The Blog - Admin</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/all.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="dashboard-header">
+        <div class="logo-bg text-center">
+            <a class="text-white" target="_blank" href="index.html">The Blog</a>
+        </div>
+        <ul class="list-unstyled d-inline-block mb-0">
+            <li class=""><a class="text-dark" href="index.html">Sign out</a></li>
+        </ul>
+    </header>
+
+    <nav class="dashboard-side-menu bg-dark d-inline-block mt-0">
+        <div class="position-sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1" href="admin.html"><i class="fas fa-home"></i>Dashboard</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1" href="about-adm.html"><i class="fas fa-info-circle"></i>About</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1" href="posts-adm.html"><i class="fas fa-newspaper"></i>Posts</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1" href="comments-adm.html"><i class="fab fa-microblog"></i>Commentaries</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1 selected" href="messages-adm.html"><i class="fas fa-envelope-square"></i>Messages</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="dashboard-wrapper bg-light">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3">
+            <h2>Messages</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-sm bg-white m-1 p-3 rounded">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Message</th>
+                            <th scope="col">View</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td>Adam</td>
+                            <td>name@mail.com</td>
+                            <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum ratione qui  ...</td>
+                            <td>
+                                <a class="btn btn-info" href="#">View</a>
+                            </td>
+                            <td>
+                            <form action="" method="POST">
+                                <input type="hidden" name="id" value="">
+                                <button name="find_id" class="btn btn-danger">Delete</button>
+                            </form>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>Sam</td>
+                            <td>name@mail.com</td>
+                            <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum ratione qui  ...</td>
+                            <td>
+                                <a class="btn btn-info" href="#">View</a>
+                            </td>
+                            <td>
+                            <form action="" method="POST">
+                                <input type="hidden" name="id" value="">
+                                <button name="find_id" class="btn btn-danger">Delete</button>
+                            </form>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-outline-primary my-2 my-sm-0 disabled" href="#">&lt;</a>
+                    <a class="mx-3 mt-1" href="#"><span>1</span></a>
+                    <a class="btn btn-outline-primary my-2 my-sm-0 disabled" href="#">&gt;</a>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="assets/js/vendor/jquery-3.2.1.slim.min.js"></script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+</body>
+</html>

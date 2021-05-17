@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="Carlos Machado">
+	<link rel="icon" href="assets/img/favicons/favicon.ico">
+
+	<title>The Blog - Admin</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/all.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="dashboard-header">
+        <div class="logo-bg text-center">
+            <a class="text-white" target="_blank" href="index.html">The Blog</a>
+        </div>
+        <ul class="list-unstyled d-inline-block mb-0">
+            <li class=""><a class="text-dark" href="index.html">Sign out</a></li>
+        </ul>
+    </header>
+
+    <nav class="dashboard-side-menu bg-dark d-inline-block mt-0">
+        <div class="position-sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1 selected" href="admin.html"><i class="fas fa-home"></i>Dashboard</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1" href="about-adm.html"><i class="fas fa-info-circle"></i>About</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1" href="posts-adm.html"><i class="fas fa-newspaper"></i>Posts</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1" href="comments-adm.html"><i class="fab fa-microblog"></i>Commentaries</a>
+                </li>
+                <li class="nav-item m-0 p-0">
+                    <a class="nav-link text-white m-0 py-1" href="messages-adm.html"><i class="fas fa-envelope-square"></i>Messages</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="dashboard-wrapper bg-light">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3">
+            <h2>Dashboard</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-sm bg-white m-1 p-3 rounded">
+                <h5>Posts</h5>
+                <div class="mt-4">
+                    <h6>Total of posts: 104</h6>
+                    <h6>Average comments per post: 4.4</h6>
+                </div>
+            </div>
+            <div class="col-sm bg-white m-1 p-3 rounded">
+                <h5>Commentaries</h5>
+                <div class="mt-4">
+                    <h6>Total of comments: 456</h6>
+                </div>
+            </div>
+            <div class="col-sm bg-white m-1 p-3 rounded">
+                <h5>Messages</h5>
+                <div class="mt-4">
+                    <h6>Total of messages: 24</h6>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm bg-white m-1 p-3 rounded">
+                <h5>Metrics</h5>
+                <div class="mt-4">
+                    <h6>Most popular post: <a href="post.html" target="_blanc">Lorem ipsum</a></h6>
+                    <h6>Time the user spent on the site: 20min</h6>
+                    <h6>Daily visits count: 23</h6>
+                    <h6>Week visits count: 174</h6>
+                    <h6>Monthly visits count: 629</h6>
+                </div>
+            </div>
+            <div class="col-sm bg-white m-1 p-3 rounded">
+                <h5>Last daily visits</h5>
+                <canvas class="mt-4" id="last-daily-visits-chart"></canvas>
+            </div>
+        </div>
+        
+    </main>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="assets/js/vendor/jquery-3.2.1.slim.min.js"></script>
+    <script src="assets/js/vendor/popper.min.js"></script>
+    <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById("last-daily-visits-chart");
+        var lastDailyVisitsChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+            datasets: [{
+            data: [38, 21, 18, 29, 25, 32, 44],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            scales: {
+            yAxes: [{
+                ticks: {
+                beginAtZero: false
+                }
+            }]
+            },
+            legend: {
+            display: false,
+            }
+        }
+        });
+    </script>
+</body>
+</html>
