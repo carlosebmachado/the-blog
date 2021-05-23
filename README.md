@@ -12,5 +12,6 @@ The blog application has Home, About, and Contact pages where you can edit by Ad
 There is the Dashboard where you can see some information about your blog, the About, Posts, Commentaries, and Messages to edit their respective data.
 
 ## Install
-- Edit the Config.php and configure domain and db constants.
-- Create an db with the setted name and run the SQL from assets/db_blog.sql
+- Edit the Config.php and configure domain and DB constants;
+- Create a DB with the name that was set in the Config.php file and run the SQL from assets/db_blog.sql in the created DB;
+- Run it in the server of your preference.
