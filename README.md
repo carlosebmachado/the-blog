@@ -1,7 +1,7 @@
 # Blog System
 
 ## Description
-The Blog System was made with pure PHP using MVC pattern, MySQL database, and bootstrap framework. My focus was the back-end, so the front-end is basically pure bootstrap. You can access an live preview [here](https://carlosebmachado.github.io/blog/).
+The Blog was made with PHP using MVC pattern, MySQL database, and bootstrap css framework. My focus was the back-end, so the front-end is basically pure bootstrap. <!-- You can access an live preview [here](https://carlosebmachado.github.io/blog/). -->
 
 ## Features
 
