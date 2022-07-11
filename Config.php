@@ -2,7 +2,7 @@
 
 class Config
 {
-    const BASE_NAME = '/blog/';
+    const BASE_NAME = '/the-blog/';
     const BLOG_POST_IMAGE_PATH = Config::BASE_NAME.'data/blog_post_images/';
     const ABOUT_IMAGE_PATH = Config::BASE_NAME.'data/about_image/';
 
