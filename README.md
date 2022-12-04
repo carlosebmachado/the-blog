@@ -1,14 +1,14 @@
 # The Blog
 
 ## Description
-The Blog was made with PHP using MVC pattern, MySQL database, and bootstrap css framework. My focus was the back-end, so the front-end is basically pure bootstrap. <!-- You can access an live preview [here](https://carlosebmachado.github.io/blog/). -->
+The Blog was made with PHP using MVC pattern, MySQL database, and bootstrap CSS framework.
 
 ## Features
 
 ### Pages
-The blog application has Home, About, and Contact pages where you can edit by Admin Page. You can access the Admin Page by logging in.
+The Blog application has Home, About, and Contact pages where it is possible to edit throught Admin panel. You can access the Admin panel by logging in.
 
-### Admin Page
+### Admin Panel
 There is the Dashboard where you can see some information about your blog, the About, Posts, Commentaries, and Messages to edit their respective data.
 
 ## Install
