@@ -31,10 +31,10 @@ class AdminAboutController extends Controller
 			switch ($action)
 			{
 				case 'edit':
-					\views\View::render('admin_about_edit.php', 'dashboard_header.php', 'dashboard_footer.php');
+					\views\View::render('admin/about/about_edit.php', 'dashboard_header.php', 'dashboard_footer.php');
 					break;
 				default:
-					\views\View::render('admin_about_edit.php', 'dashboard_header.php', 'dashboard_footer.php');
+					\views\View::render('admin/about/about_edit.php', 'dashboard_header.php', 'dashboard_footer.php');
 			}
 		}
 	}

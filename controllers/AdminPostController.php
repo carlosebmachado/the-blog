@@ -59,19 +59,19 @@ class AdminPostController extends Controller
 			switch ($action)
 			{
 				case 'new':
-					\views\View::render('admin_post_new.php', 'dashboard_header.php', 'dashboard_footer.php');
+					\views\View::render('admin/post/post_new.php', 'dashboard_header.php', 'dashboard_footer.php');
 					break;
 				case 'list':
-					\views\View::render('admin_post_list.php', 'dashboard_header.php', 'dashboard_footer.php');
+					\views\View::render('admin/post/post_list.php', 'dashboard_header.php', 'dashboard_footer.php');
 					break;
 				case 'edit':
-					\views\View::render('admin_post_edit.php', 'dashboard_header.php', 'dashboard_footer.php');
+					\views\View::render('admin/post/post_edit.php', 'dashboard_header.php', 'dashboard_footer.php');
 					break;
 				case 'delete':
-					\views\View::render('admin_post_delete.php', 'dashboard_header.php', 'dashboard_footer.php');
+					\views\View::render('admin/post/post_delete.php', 'dashboard_header.php', 'dashboard_footer.php');
 					break;
 				default:
-					\views\View::render('admin_post_list.php', 'dashboard_header.php', 'dashboard_footer.php');
+					\views\View::render('admin/post/post_list.php', 'dashboard_header.php', 'dashboard_footer.php');
 			}
 		}
 	}

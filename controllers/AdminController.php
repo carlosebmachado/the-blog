@@ -8,6 +8,6 @@ class AdminController extends Controller
 	{
 		\models\Login::verify_logout();
 
-		\views\View::render('admin.php', 'dashboard_header.php', 'dashboard_footer.php');
+		\views\View::render('admin/dashboard.php', 'dashboard_header.php', 'dashboard_footer.php');
 	}
 }

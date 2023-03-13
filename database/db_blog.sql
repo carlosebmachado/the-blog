@@ -27,61 +27,61 @@ SET time_zone = "+00:00";
 -- Estrutura da tabela `about_info`
 --
 
-CREATE TABLE `about_info` (
-  `id` tinyint(1) UNSIGNED NOT NULL,
+CREATE TABLE `about` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
-  `about` text NOT NULL,
-  `photo` varchar(255) DEFAULT NULL
+  `about` longtext NOT NULL,
+  `photo` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `about_info`
---
-
-INSERT INTO `about_info` (`id`, `name`, `about`, `photo`) VALUES
-(1, 'Name', 'About', '');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `admin_user`
+-- Estrutura da tabela `user`
 --
 
-CREATE TABLE `admin_user` (
-  `id` tinyint(3) UNSIGNED NOT NULL,
+CREATE TABLE `user` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
+  `change_pwd` tinyint(1) NOT NULL DEFAULT '0',-- 0 = false, 1 = true
+  `role` varchar(15) NOT NULL, 
   `uid` varchar(15) NOT NULL,
   `pwd` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Inserindo usuário padrão
+
+INSERT INTO `user` (`id`, `name`, `change_pwd`, `role`, `uid`, `pwd`) VALUES
+(1, 'Admin', 1, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3');-- pwd = md5('admin')
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `blog_post`
+-- Estrutura da tabela `post`
 --
 
-CREATE TABLE `blog_post` (
+CREATE TABLE `post` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `title` varchar(30) NOT NULL,
   `date` date NOT NULL,
-  `summary` varchar(255) NOT NULL,
-  `body` text NOT NULL,
-  `image` varchar(255) DEFAULT NULL
+  `likes` int(11) NOT NULL DEFAULT '0',
+  `body` longtext NOT NULL,
+  `image` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `blog_post_commentary`
+-- Estrutura da tabela `commentary`
 --
 
-CREATE TABLE `blog_post_commentary` (
+CREATE TABLE `commentary` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `date` date NOT NULL,
-  `blog_post_id` bigint(20) UNSIGNED NOT NULL
+  `post_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -103,30 +103,30 @@ CREATE TABLE `contact_message` (
 --
 
 --
--- Índices para tabela `about_info`
+-- Índices para tabela `about`
 --
-ALTER TABLE `about_info`
+ALTER TABLE `about`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
 --
 -- Índices para tabela `admin_user`
 --
-ALTER TABLE `admin_user`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- Índices para tabela `blog_post`
+-- Índices para tabela `post`
 --
-ALTER TABLE `blog_post`
+ALTER TABLE `post`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
 --
--- Índices para tabela `blog_post_commentary`
+-- Índices para tabela `commentary`
 --
-ALTER TABLE `blog_post_commentary`
+ALTER TABLE `commentary`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
 
@@ -142,27 +142,27 @@ ALTER TABLE `contact_message`
 --
 
 --
--- AUTO_INCREMENT de tabela `about_info`
+-- AUTO_INCREMENT de tabela `about`
 --
-ALTER TABLE `about_info`
-  MODIFY `id` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `about`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de tabela `admin_user`
+-- AUTO_INCREMENT de tabela `user`
 --
-ALTER TABLE `admin_user`
-  MODIFY `id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `user`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de tabela `blog_post`
+-- AUTO_INCREMENT de tabela `post`
 --
-ALTER TABLE `blog_post`
+ALTER TABLE `post`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
--- AUTO_INCREMENT de tabela `blog_post_commentary`
+-- AUTO_INCREMENT de tabela `commentary`
 --
-ALTER TABLE `blog_post_commentary`
+ALTER TABLE `commentary`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
