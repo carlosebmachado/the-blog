@@ -62,7 +62,7 @@
     </table>
     <div class="d-flex justify-content-center">
       <a class="btn btn-outline-primary my-2 my-sm-0<?php if ($cur_page == 1) echo ' disabled' ?>" href="<?php echo '?action=list&page=' . $previous_page ?>">
-        << /a>
+        < </a>
           <a class="mx-3 mt-1" href="#"><span><?php echo $cur_page ?></span></a>
           <a class="btn btn-outline-primary my-2 my-sm-0<?php if (count($blog_posts) < $page_amt) echo ' disabled' ?>" href="<?php echo '?action=list&page=' . $next_page ?>">></a>
     </div>
