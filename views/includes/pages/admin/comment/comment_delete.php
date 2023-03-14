@@ -6,7 +6,7 @@ $message = '';
 
 if (isset($_POST['find_id']))
 {
-    $comment = \models\BlogPostCommentary::select_by_id($_POST['id']);
+    $comment = \models\Commentary::select_by_id($_POST['id']);
     if ($comment != null)
     {
         $id = (string)$comment->get_id();

@@ -31,7 +31,9 @@ class Post extends Model
     public function set_title($title) { $this->title = $title; }
     public function get_date() { return $this->date; }
     public function set_date($date) { $this->date = $date; }
-    public function get_summary() { return ""; }
+    public function get_summary() { return substr($this->body, 0, 500) . '...'; }
+    public function get_likes() { return $this->likes; }
+    public function set_likes($likes) { $this->likes = $likes; }
     public function get_body() { return $this->body; }
     public function set_body($body) { $this->body = $body; }
     public function get_image() { return $this->image; }
@@ -45,7 +47,7 @@ class Post extends Model
         if ($data == null) return null;
         $data = $data[0];
         $blog_post = null;
-        $comments = BlogPostCommentary::select_by_blog_post_id($id);
+        $comments = Commentary::select_by_post_id($id);
         $blog_post = new Post($data['id'], $data['title'], $data['date'], $data['likes'], $data['body'], $data['image'], $comments);
 
         return $blog_post;
@@ -58,7 +60,7 @@ class Post extends Model
         $blog_posts = [];
         foreach($data as $q)
         {
-            $comments = BlogPostCommentary::select_by_blog_post_id($q['id']);
+            $comments = Commentary::select_by_post_id($q['id']);
             $a = new Post($q['id'], $q['title'], $q['date'], $q['likes'], $q['body'], $q['image'], $comments);
             array_push($blog_posts, $a);
         }
@@ -85,7 +87,7 @@ class Post extends Model
         $blog_posts = [];
         foreach($data as $q)
         {
-            $comments = BlogPostCommentary::select_by_blog_post_id($q['id']);
+            $comments = Commentary::select_by_post_id($q['id']);
             $a = new Post($q['id'], $q['title'], $q['date'], $q['likes'], $q['body'], $q['image'], $comments);
             array_push($blog_posts, $a);
         }
@@ -94,12 +96,12 @@ class Post extends Model
 
     public static function select_on_interval($limit, $offset)
     {
-        $data = DAO::select("SELECT * FROM `post` LIMIT ".$offset.", ".$limit."");
+        $data = DAO::select("SELECT * FROM `".Post::TABLE_NAME."` LIMIT ".$offset.", ".$limit."");
         if ($data == null) return [];
         $blog_posts = [];
         foreach($data as $q)
         {
-            $comments = BlogPostCommentary::select_by_blog_post_id($q['id']);
+            $comments = Commentary::select_by_post_id($q['id']);
             $a = new Post($q['id'], $q['title'], $q['date'], $q['likes'], $q['body'], $q['image'], $comments);
             array_push($blog_posts, $a);
         }

@@ -27,7 +27,7 @@ else
 <body>
     <header class="dashboard-header">
         <div class="logo-bg text-center">
-            <a class="text-white" target="_blank" href="/blog">The Blog</a>
+            <a class="text-white text" target="_blank" href="/blog"><strong>The Blog</strong></a>
         </div>
         <ul class="list-unstyled d-inline-block mb-0">
             <li class=""><a class="text-dark" href="?logout">Sign out</a></li>
@@ -54,7 +54,6 @@ else
                 <li class="nav-item m-0 p-0">
                     <a class="nav-link text-white m-0 py-1<?php if ($pageName == 'Commentaries - List') echo ' selected' ?>" href="../admin/commentaries?action=list"><i class="fab fa-microblog"></i>Commentaries</a>
                     <?php if (substr($pageName, 0, 12) == 'Commentaries') { ?>
-                    <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Commentaries - View') echo ' selected-sub' ?>" href="../admin/commentaries?action=view">View</a>
                     <a class="nav-link bg-light border-right border-bottom text-dark m-0 py-1<?php if ($pageName == 'Commentaries - Delete') echo ' selected-sub' ?>" href="../admin/commentaries?action=delete">Delete</a>
                     <?php } ?>
                 </li>

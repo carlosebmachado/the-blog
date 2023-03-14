@@ -12,7 +12,7 @@ class PostController extends Controller
 			$message = $_POST['message'];
 			$id = $_POST['id'];
 		
-			$comment =  new \models\BlogPostCommentary(null, $name, $message, date('Y-m-d'), $id);
+			$comment =  new \models\Commentary(null, $name, $message, date('Y-m-d'), $id);
 			$comment->insert();
 		}
 

@@ -26,7 +26,7 @@
         }
     }
     
-    $blog_posts = \models\BlogPost::select_on_interval($page_amt, $offset);
+    $blog_posts = \models\Post::select_on_interval($page_amt, $offset);
 
     foreach ($blog_posts as $blog_post)
     {
@@ -42,7 +42,7 @@
                     <td><?php echo $blog_post->get_date() ?></td>
                     <td><?php echo $new_summary ?></td>
                     <td>
-                        <a class="btn btn-info" href="<?php echo \Config::BASE_NAME.'post?id='.$blog_post->get_id() ?>" target="_blanc">View</a>
+                        <a class="btn btn-info" href="<?php echo \Config::BASE_NAME.'post?id='.$blog_post->get_id() ?>" target="_blank">View</a>
                     </td>
                     <td>
                     <form action="../admin/posts?action=edit" method="POST">

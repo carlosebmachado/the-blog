@@ -9,10 +9,6 @@
                 <input type="text" name="title" class="form-control" id="title" value="">
             </div>
             <div class="form-group">
-                <label for="summary">Summary</label>
-                <textarea name="summary" class="form-control summary" id="summary"></textarea>
-            </div>
-            <div class="form-group">
                 <label for="body">Body</label>
                 <textarea name="body" class="form-control" id="body"></textarea>
             </div>

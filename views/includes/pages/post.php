@@ -5,7 +5,7 @@
     <?php
 
     $id = isset($_GET['id']) ? $_GET['id'] : 0;
-    $blog_post = \models\BlogPost::select_by_id($id);
+    $blog_post = \models\Post::select_by_id($id);
 
     if ($blog_post == null)
     {
@@ -25,7 +25,7 @@
     </div>
     <div class="row mt-5">
         <div class="col-md-12">
-            <img class="img-fluid" src="<?php echo Config::BLOG_POST_IMAGE_PATH.$blog_post->get_image() ?>" alt="Blog call image">
+            <img class="img-fluid cover-image" src="data:image/png;base64,<?php echo $blog_post->get_image() ?>" alt="<?php echo $blog_post->get_title() ?> post cover image">
         </div>
     </div>
     <div class="row mt-5">
@@ -37,10 +37,14 @@
 <!-- 
     Comments
  -->
-<div class="container w-50 mt-5">
+<div class="container mt-5">
     <h3>Comments:</h3>
     <?php
-    $comments = \models\BlogPostCommentary::select_by_blog_post_id($id);
+    $comments = \models\Commentary::select_by_post_id($id);
+    if (count($comments) == 0)
+    {
+        echo '<p>No comments yet.</p>';
+    }
     foreach ($comments as $comment)
     {
     ?>
@@ -66,7 +70,7 @@
 <!-- 
     Comment form
 -->
-<div class="container w-50 mt-5">
+<div class="container mt-5">
     <div class="row mt-5 bg-light rounded p-3">
         <div class="col-md">
             <h2>Leave a commentary:</h2>

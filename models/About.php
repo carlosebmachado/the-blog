@@ -2,8 +2,10 @@
 
 namespace models;
 
-class AboutInfo extends Model
+class About extends Model
 {
+    const TABLE_NAME = 'about';
+
     private $id;
     private $name;
     private $about;
@@ -27,9 +29,26 @@ class AboutInfo extends Model
 
     public static function select()
     {
-        $data = DAO::select("SELECT * FROM `about_info` WHERE `id`=1")[0];
-        $about = new AboutInfo($data['id'], $data['name'], $data['about'], $data['photo']);
+        $db_res = DAO::select("SELECT * FROM `".About::TABLE_NAME."` WHERE `id`=1");
+        if ($db_res == null) return null;
+        $data = $db_res[0];
+        $about = new About($data['id'], $data['name'], $data['about'], $data['photo']);
         return $about;
+    }
+
+    public static function select_last()
+    {
+        $db_res = DAO::select("SELECT * FROM `".About::TABLE_NAME."` ORDER BY `id` DESC LIMIT 1");
+        if ($db_res == null) return null;
+        $data = $db_res[0];
+        $about = new About($data['id'], $data['name'], $data['about'], $data['photo']);
+        return $about;
+    }
+
+    public function insert()
+    {
+        $sql = "INSERT INTO `".About::TABLE_NAME."` (`id`, `name`, `about`, `photo`) VALUES (".($this->id == null ? 'NULL' : $this->id).", ?, ?, ?)";
+        DAO::insert($sql, array($this->name, $this->about, $this->photo));
     }
 
     public function update($name = null, $about = null, $photo = null)
@@ -38,7 +57,7 @@ class AboutInfo extends Model
         if ($about != null) $this->about = $about;
         if ($photo != null) $this->photo = $photo;
 
-        $sql = "UPDATE `about_info` SET `name`=?, `about`=?, `photo`=? WHERE `id`=1";
+        $sql = "UPDATE `".About::TABLE_NAME."` SET `name`=?, `about`=?, `photo`=? WHERE `id`=1";
         return DAO::update($sql, array($this->name, $this->about, $this->photo));
     }
 }

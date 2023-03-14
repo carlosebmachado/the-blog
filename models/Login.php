@@ -8,7 +8,7 @@ class Login extends Model
     {
         if (session_status() === PHP_SESSION_NONE) session_start();
 
-        $user = \models\AdminUser::select($uid, md5($pwd));
+        $user = \models\User::select($uid, md5($pwd));
         
         if ($user != null)
         {

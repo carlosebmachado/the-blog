@@ -1,5 +1,8 @@
 <?php
-$about_info = \models\AboutInfo::select();
+$about_info = \models\About::select_last();
+if ($about_info == null) {
+    $about_info = new \models\About(1, '', '', '');
+}
 $hasphoto = $about_info->get_photo() == '' ? false : true;
 ?>
 <div class="row">
@@ -16,7 +19,7 @@ $hasphoto = $about_info->get_photo() == '' ? false : true;
             <div class="form-group">
                 <label for="image">Image: </label>
                 <?php if ($hasphoto) { ?>
-                <img class="admin-image mb-3" src="<?php echo Config::ABOUT_IMAGE_PATH.$about_info->get_photo() ?>" alt="About image">
+                <img class="admin-image mb-3" src="data:image/png;base64,<?php echo $about_info->get_photo() ?>" alt="About image">
                 <?php } ?>
                 <input type="file" name="image" class="form-control-file" id="image">
             </div>

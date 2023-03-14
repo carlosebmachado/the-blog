@@ -2,19 +2,19 @@
 $id = '';
 $title = '';
 $post_date = '';
-$summary = '';
+$likes = '';
 $body = '';
 $call_img = '';
 
 if (isset($_POST['find_id']))
 {
-    $post = \models\BlogPost::select_by_id($_POST['id']);
+    $post = \models\Post::select_by_id($_POST['id']);
     if ($post != null)
     {
         $id = (string)$post->get_id();
         $title = $post->get_title();
         $post_date = $post->get_date();
-        $summary = $post->get_summary();
+        $likes = $post->get_likes();
         $body = $post->get_body();
         $call_img = $post->get_image();
     }
@@ -33,7 +33,11 @@ $hasphoto = $call_img == '' ? false : true;
                     </div>
                     <div class="col">
                         <label for="post_date">Post date</label>
-                        <input type="text" name="post_date" class="form-control" id="post_date" value="<?php echo $post_date ?>">
+                        <input disabled type="text" name="post_date" class="form-control" id="post_date" value="<?php echo $post_date ?>">
+                    </div>
+                    <div class="col">
+                        <label for="likes">Likes</label>
+                        <input disabled type="text" name="likes" class="form-control" id="likes" value="<?php echo $likes ?>">
                     </div>
                 </div>
             </div>
@@ -42,17 +46,13 @@ $hasphoto = $call_img == '' ? false : true;
                 <input type="text" name="title" class="form-control" id="title" value="<?php echo $title ?>">
             </div>
             <div class="form-group">
-                <label for="summary">Summary</label>
-                <textarea name="summary" class="form-control summary" id="summary"><?php echo $summary ?></textarea>
-            </div>
-            <div class="form-group">
                 <label for="body">Body</label>
                 <textarea name="body" class="form-control" id="body"><?php echo $body ?></textarea>
             </div>
             <div class="form-group">
                 <label for="image">Image</label>
                 <?php if ($hasphoto) { ?>
-                <img class="admin-image mb-3" src="<?php echo Config::BLOG_POST_IMAGE_PATH.$call_img ?>" alt="About image">
+                <img class="admin-image mb-3" src="data:image/png;base64,<?php echo $call_img ?>" alt="About image">
                 <?php } ?>
                 <input type="file" name="image" class="form-control-file" id="image">
             </div>

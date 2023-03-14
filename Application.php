@@ -12,7 +12,7 @@ use controllers\
 	HomeController,
 	LoginController,
 	PostController,
-	TestController,
+	SeedController,
 	ErrorController
 };
 
@@ -35,7 +35,7 @@ class Application
 		$homeController = new HomeController();
 		$loginController = new LoginController();
 		$postController = new PostController();
-		$testController = new TestController();
+		$seedController = new SeedController();
 		$errorController = new ErrorController();
 
 		Router::get('/about', function() use ($aboutController) {
@@ -90,8 +90,8 @@ class Application
 			$postController->index();
 		});
 
-		Router::get('/test', function() use ($testController) {
-			$testController->index();
+		Router::get('/seed', function() use ($seedController) {
+			$seedController->index();
 		});
 
 		if (!Router::executed()) $errorController->index();

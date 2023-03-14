@@ -7,7 +7,7 @@ if (isset($_GET['posts']))
     $images_count = count($image_paths);
     for ($i = $post_count; $i >= 0; $i--)
     {
-        $article = new \models\BlogPost(
+        $article = new \models\Post(
             null,
             'Lorem ipsum',
             date('Y-m-d', time() - (60*60*24) * $i),
@@ -26,13 +26,13 @@ if (isset($_GET['posts']))
 if (isset($_GET['comments']))
 {
     $post_count = (int)$_GET['comments'];
-    $articles = \models\BlogPost::select_all();
+    $articles = \models\Post::select_all();
     foreach ($articles as $article)
     {
         $tc = rand(0, $post_count);
         for ($j = $tc; $j >= 0; $j--)
         {
-            $c =  new \models\BlogPostCommentary(
+            $c =  new \models\Commentary(
                 null, 'Person Name',
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor ultrices augue, ut eleifend ipsum. Proin convallis augue ut nisl viverra, sit amet malesuada enim convallis. Quisque arcu diam, scelerisque sed molestie et, consequat in massa.',
                 date('Y-m-d', strtotime($article->get_date()) + (60*60*24) * rand(0, 5)),

@@ -8,56 +8,45 @@ class AdminPostController extends Controller
 	{
 		\models\Login::verify_logout();
 
-		if (isset($_POST['new']))
-		{
+		if (isset($_POST['new'])) {
 			$title = $_POST['title'];
-			$summary = $_POST['summary'];
 			$body = $_POST['body'];
-			$image_name = '';
+			$base64_image = '';
 
-			if ($_FILES["image"]["error"] == UPLOAD_ERR_OK)
-			{
+			if ($_FILES["image"]["error"] == UPLOAD_ERR_OK) {
 				$tmp_name = $_FILES["image"]["tmp_name"];
-				$image_name = $title.'_'.basename($_FILES["image"]["name"]);
-				move_uploaded_file($tmp_name, '..'.\Config::BLOG_POST_IMAGE_PATH.$image_name);
+				$image_data = file_get_contents($tmp_name);
+				$base64_image = base64_encode($image_data);
 			}
 
-			$article = new \models\BlogPost(null, $title, date('Y-m-d'), $summary, $body, $image_name);
+			$article = new \models\Post(null, $title, date('Y-m-d'), 0, $body, $base64_image);
 			$article->insert();
 		}
 
-		if (isset($_POST['edit']))
-		{
+		if (isset($_POST['edit'])) {
 			$id = $_POST['id'];
 			$title = $_POST['title'];
-			$post_date = $_POST['post_date'];
-			$summary = $_POST['summary'];
 			$body = $_POST['body'];
-			$image_name = '';
+			$base64_image = '';
 
-			if ($_FILES["image"]["error"] == UPLOAD_ERR_OK)
-			{
+			if ($_FILES["image"]["error"] == UPLOAD_ERR_OK) {
 				$tmp_name = $_FILES["image"]["tmp_name"];
-				$image_name = $title.'_'.basename($_FILES["image"]["name"]);
-				move_uploaded_file($tmp_name, '..'.\Config::BLOG_POST_IMAGE_PATH.$image_name);
+				$image_data = file_get_contents($tmp_name);
+				$base64_image = base64_encode($image_data);
 			}
 
-			$article = \models\BlogPost::select_by_id($id);
-			$article->update($title, $post_date, $summary, $body, $image_name);
+			$article = \models\Post::select_by_id($id);
+			$article->update($title, null, null, $body, $base64_image);
 		}
 
-		if (isset($_POST['delete']))
-		{
+		if (isset($_POST['delete'])) {
 			$id = $_POST['id'];
-
-			\models\BlogPost::delete_by_id($id);
+			\models\Post::delete_by_id($id);
 		}
 
-		if (isset($_GET['action']))
-		{
+		if (isset($_GET['action'])) {
 			$action = $_GET['action'];
-			switch ($action)
-			{
+			switch ($action) {
 				case 'new':
 					\views\View::render('admin/post/post_new.php', 'dashboard_header.php', 'dashboard_footer.php');
 					break;

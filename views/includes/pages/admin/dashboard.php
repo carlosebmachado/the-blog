@@ -1,6 +1,6 @@
 <?php
-$posts_count = \models\BlogPost::count();
-$comments_count = \models\BlogPostCommentary::count();
+$posts_count = \models\Post::count();
+$comments_count = \models\Commentary::count();
 $messages_count = \models\ContactMessage::count();
 $comments_average = round($comments_count / $posts_count, 2);
 ?>

@@ -25,7 +25,7 @@
     ?>
             <div class="row mt-4 border-bottom">
                 <div class="col-md-4 contain mx-0">
-                    <img class="img-fluid" src="data:image/png;base64, <?php echo $blog_post->get_image() ?>" alt="<?php echo $blog_post->get_title() ?> post image cover">
+                    <img class="img-fluid" src="data:image/png;base64,<?php echo $blog_post->get_image() ?>" alt="<?php echo $blog_post->get_title() ?> post image cover">
                 </div>
                 <div class="col-md-8">
                     <a href="<?php echo 'post?id=' . $blog_post->get_id() ?>">
