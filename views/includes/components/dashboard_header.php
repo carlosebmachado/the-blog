@@ -27,7 +27,7 @@ else
 <body>
   <header class="dashboard-header">
     <div class="logo-bg text-center">
-      <a class="text-white text" target="_blank" href="/blog"><strong>The Blog</strong></a>
+      <a class="text-white text" target="_blank" href="/"><strong>The Blog</strong></a>
     </div>
     <ul class="list-unstyled d-inline-block mb-0">
       <li class=""><a class="text-dark" href="?logout">Sign out</a></li>
