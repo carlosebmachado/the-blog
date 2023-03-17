@@ -2,12 +2,10 @@
 
 class Config
 {
-  const BASE_NAME = '/';
-  const BLOG_POST_IMAGE_PATH = Config::BASE_NAME . 'data/blog_post_images/';
-  const ABOUT_IMAGE_PATH = Config::BASE_NAME . 'data/about_image/';
+  const BASE_NAME = '/the-blog/';
 
   const DB_HOST = 'localhost';
-  const DB_NAME = 'blog';
+  const DB_NAME = 'cebm';
   const DB_USER = 'root';
   const DB_PASSWORD = '';
 
