@@ -4,7 +4,7 @@ namespace models;
 
 class Post extends Model
 {
-  const TABLE_NAME = 'post';
+  const TABLE_NAME = Model::TABLE_PREFIX . 'post';
 
   private $id;
   private $title;
