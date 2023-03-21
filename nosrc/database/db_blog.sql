@@ -1,6 +1,6 @@
-/**
- * Criando tabelas
- */
+--
+-- Criando tabelas
+--
 
 -- Estrutura da tabela tb_about_info
 CREATE TABLE tb_about (
@@ -50,9 +50,9 @@ CREATE TABLE tb_contact_message (
 );
 
 
-/**
- * Criando primary keys e unique keys
- */
+--
+-- Criando primary keys e unique keys
+--
 
 -- Índices para tabela tb_about
 ALTER TABLE tb_about
@@ -80,9 +80,9 @@ ALTER TABLE tb_contact_message
   ADD UNIQUE KEY id (id);
 
 
-/**
-  * Criando auto increments
-  */
+--
+-- Criando auto increments
+--
 
 -- AUTO_INCREMENT de tabela tb_about
 ALTER TABLE tb_about
@@ -105,9 +105,9 @@ ALTER TABLE tb_contact_message
   MODIFY id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 
-/**
-  * Criando foreign keys
-  */
+--
+-- Criando foreign keys
+--
 
 -- AUTO_INCREMENT de tabela tb_commentary
 ALTER TABLE tb_commentary
