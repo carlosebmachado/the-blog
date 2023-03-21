@@ -4,7 +4,7 @@ namespace models;
 
 class About extends Model
 {
-  const TABLE_NAME = 'about';
+  const TABLE_NAME = Model::TABLE_PREFIX . 'about';
 
   private $id;
   private $name;

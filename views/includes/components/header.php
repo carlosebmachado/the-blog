@@ -17,7 +17,7 @@ if (isset($_GET['q'])) {
   <meta name="author" content="Carlos Machado">
   <link rel="icon" href="<?php echo Config::BASE_NAME ?>assets/img/favicons/favicon.ico">
 
-  <title>The Blog - Your daily slice of knowledge</title>
+  <title>The Blog - Your daily news</title>
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo Config::BASE_NAME ?>assets/css/bootstrap.min.css" rel="stylesheet">

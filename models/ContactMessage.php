@@ -4,6 +4,8 @@ namespace models;
 
 class ContactMessage extends Model
 {
+  const TABLE_NAME = Model::TABLE_PREFIX . 'contact_message';
+
   private $id;
   private $name;
   private $email;
@@ -59,7 +61,7 @@ class ContactMessage extends Model
 
   public static function select_by_id($id)
   {
-    $data = DAO::select("SELECT * FROM `contact_message` WHERE `id` = ?", array($id));
+    $data = DAO::select("SELECT * FROM `" . ContactMessage::TABLE_NAME . "` WHERE `id` = ?", array($id));
     if ($data == null) return null;
     $data = $data[0];
     $contact_message = new ContactMessage($data['id'], $data['name'], $data['email'], $data['date'], $data['message']);
@@ -68,7 +70,7 @@ class ContactMessage extends Model
 
   public static function select_on_interval($limit, $offset)
   {
-    $data = DAO::select("SELECT * FROM `contact_message` LIMIT " . $offset . ", " . $limit);
+    $data = DAO::select("SELECT * FROM `" . ContactMessage::TABLE_NAME . "` LIMIT " . $offset . ", " . $limit);
     if ($data == null) return [];
     $contact_message = [];
     foreach ($data as $d) {
@@ -80,7 +82,7 @@ class ContactMessage extends Model
 
   public static function select_all()
   {
-    $data = DAO::select("SELECT * FROM `contact_message`");
+    $data = DAO::select("SELECT * FROM `" . ContactMessage::TABLE_NAME . "`");
     if ($data == null) return [];
     $contact_messages = [];
     foreach ($data as $d) {
@@ -92,17 +94,17 @@ class ContactMessage extends Model
 
   public static function count()
   {
-    return DAO::select("SELECT COUNT(*) FROM `contact_message`")[0][0];
+    return DAO::select("SELECT COUNT(*) FROM `" . ContactMessage::TABLE_NAME . "`")[0][0];
   }
 
   public static function delete_by_id($id)
   {
-    return DAO::select("DELETE FROM `contact_message` WHERE `id`=?", array($id));
+    return DAO::select("DELETE FROM `" . ContactMessage::TABLE_NAME . "` WHERE `id`=?", array($id));
   }
 
   public function insert()
   {
-    $sql = "INSERT INTO `contact_message` (`id`, `name`, `email`, `date`, `message`) VALUES (NULL, ?, ?, ?, ?)";
+    $sql = "INSERT INTO `" . ContactMessage::TABLE_NAME . "` (`id`, `name`, `email`, `date`, `message`) VALUES (NULL, ?, ?, ?, ?)";
     DAO::insert($sql, array($this->name, $this->email, $this->date, $this->message));
   }
 }

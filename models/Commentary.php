@@ -4,7 +4,7 @@ namespace models;
 
 class Commentary extends Model
 {
-  const TABLE_NAME = 'commentary';
+  const TABLE_NAME = Model::TABLE_PREFIX . 'commentary';
 
   private $id;
   private $name;

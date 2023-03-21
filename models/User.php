@@ -4,7 +4,7 @@ namespace models;
 
 class User extends Model
 {
-  const TABLE_NAME = 'user';
+  const TABLE_NAME = Model::TABLE_PREFIX . 'user';
 
   private $id;
   private $name;
