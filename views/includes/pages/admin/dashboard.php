@@ -39,7 +39,7 @@ $comments_average = round($comments_count / $posts_count, 2);
     </div>
   </div>
   <div class="col-sm bg-white m-1 p-3 rounded">
-    <h5>Last daily visits</h5>
+    <h5>Fake Last daily visits</h5>
     <canvas class="mt-4" id="last-daily-visits-chart"></canvas>
   </div>
 </div>
