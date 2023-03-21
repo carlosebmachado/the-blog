@@ -19,7 +19,7 @@
   <div class="row">
     <div class="col-md">
       <h2 class="mb-0"><?php echo $blog_post->get_title() ?></h2>
-      <small class="text-muted"><?php echo $blog_post->get_date() ?></small>
+      <small class="text-muted">Posted at <?php echo $blog_post->get_date() ?></small>
     </div>
   </div>
   <div class="row mt-5">
@@ -49,7 +49,7 @@
       <div class="col">
         <div class="row">
           <div class="col-md">
-            <p><?php echo $comment->get_name() ?> <span><small class="text-muted">on <?php echo $comment->get_date() ?></small></span></p>
+            <p><b><?php echo $comment->get_name() ?></b><span><small class="text-muted">on <?php echo $comment->get_date() ?></small></span></p>
           </div>
         </div>
         <div class="row">
