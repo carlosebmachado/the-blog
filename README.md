@@ -1,7 +1,7 @@
 # The Blog
 
 ## Description
-The Blog was made with PHP using MVC pattern, MySQL database, and bootstrap CSS framework. You can acess [here](https://carlosebmachado.000webhostapp.com/the-blog/).
+The Blog was made with PHP using MVC pattern, MySQL database, and bootstrap CSS framework. You can acess [here](http://carlosebmachado.great-site.net/the-blog/).
 
 ## Features
 

@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <?php
-  $page_amt = 10;
+  $page_amt = 5;
   $cur_page = 1;
   $offset = 0;
 
@@ -22,12 +22,15 @@
     return;
   } else {
     foreach ($blog_posts as $blog_post) {
+      $hasphoto = $blog_post->get_image() <> '';
   ?>
       <div class="row mt-4 border-bottom">
-        <div class="col-md-4 contain mx-0">
-          <img class="img-fluid" src="data:image/png;base64,<?php echo $blog_post->get_image() ?>" alt="<?php echo $blog_post->get_title() ?> post image cover">
-        </div>
-        <div class="col-md-8">
+        <?php if ($hasphoto) { ?>
+          <div class="col-md-4 contain mx-0">
+            <img class="img-fluid" src="data:image/png;base64,<?php echo $blog_post->get_image() ?>" alt="<?php echo $blog_post->get_title() ?> post image cover">
+          </div>
+        <?php } ?>
+        <div class="col-md<?php if ($hasphoto) echo '-8' ?>">
           <a href="<?php echo 'post?id=' . $blog_post->get_id() ?>">
             <h2><?php echo $blog_post->get_title() ?></h2>
           </a>

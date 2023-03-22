@@ -11,9 +11,7 @@
     header('Location: ' . \Config::BASE_NAME . 'error');
     die();
   }
-
-  //$ptPostDate = date("d/m/Y", strtotime($blog_post->get_post_date()));
-  //$new_body = str_replace('\r\n', '</p><p>', $blog_post->get_body());
+  $hasphoto = $blog_post->get_image() <> '';
 
   ?>
   <div class="row">
@@ -22,11 +20,13 @@
       <small class="text-muted">Posted at <?php echo $blog_post->get_date() ?></small>
     </div>
   </div>
-  <div class="row mt-5">
-    <div class="col-md-12">
-      <img class="img-fluid cover-image" src="data:image/png;base64,<?php echo $blog_post->get_image() ?>" alt="<?php echo $blog_post->get_title() ?> post cover image">
+  <?php if ($hasphoto) { ?>
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <img class="img-fluid cover-image" src="data:image/png;base64,<?php echo $blog_post->get_image() ?>" alt="<?php echo $blog_post->get_title() ?> post cover image">
+      </div>
     </div>
-  </div>
+  <?php } ?>
   <div class="row mt-5">
     <div class="col-md">
       <?php echo $blog_post->get_body() ?>
