@@ -2,7 +2,7 @@
 -- Criando tabelas
 --
 
--- Estrutura da tabela tb_about_info
+-- Estrutura da tabela tb_about
 CREATE TABLE tb_about (
   id bigint(20) UNSIGNED NOT NULL,
   name varchar(255) NOT NULL,
