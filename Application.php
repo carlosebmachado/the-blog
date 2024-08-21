@@ -37,8 +37,20 @@ class Application
     $seedController = new SeedController();
     $errorController = new ErrorController();
 
-    Router::get('/about', function () use ($aboutController) {
-      $aboutController->index();
+    Router::get('/login', function () {
+      header('Location: admin/login');
+    });
+
+    Router::get('/admin/login', function () use ($loginController) {
+      $loginController->index();
+    });
+
+    Router::get('/admin/dashboard', function () use ($adminController) {
+      $adminController->index();
+    });
+
+    Router::get('/admin', function () {
+      header('Location: admin/dashboard');
     });
 
     Router::get('/admin/about', function () use ($adminAboutController) {
@@ -57,18 +69,6 @@ class Application
       $adminCommentController->index();
     });
 
-    Router::get('/admin/dashboard', function () use ($adminController) {
-      $adminController->index();
-    });
-
-    Router::get('/admin', function () {
-      header('Location: admin/dashboard');
-    });
-
-    Router::get('/contact', function () use ($contactController) {
-      $contactController->index();
-    });
-
     Router::get('/', function () use ($homeController) {
       $homeController->index();
     });
@@ -77,12 +77,12 @@ class Application
       $homeController->index();
     });
 
-    Router::get('/login', function () {
-      header('Location: admin/login');
+    Router::get('/about', function () use ($aboutController) {
+      $aboutController->index();
     });
 
-    Router::get('/admin/login', function () use ($loginController) {
-      $loginController->index();
+    Router::get('/contact', function () use ($contactController) {
+      $contactController->index();
     });
 
     Router::get('/post', function () use ($postController) {

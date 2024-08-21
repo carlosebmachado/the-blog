@@ -1,3 +1,13 @@
+:root {
+  --admin-sidemenu-width: 200px;
+  --admin-sidemenu-height: 100vh;
+  --admin-topbar-width: calc(100vw - var(--admin-sidemenu-width));
+  --admin-topbar-height: 50px;
+
+  --admin-sidemenu-background: #343a40!important;
+  --admin-sidemenu-background-dark: #262b30!important;
+}
+
 html,
 body {
   height: 100%;
@@ -29,12 +39,17 @@ textarea.summary {
 }
 
 .dashboard-header {
-  width: 100%;
-  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: row;
+
+  width: var(--admin-topbar-width);
+  height: var(--admin-topbar-height);
   position: fixed;
   background-color: white;
   top: 0;
-  left: 0;
+  left: 200px;
   z-index: 1;
 
   -webkit-box-shadow: 0px -3px 7px 4px rgba(0, 0, 0, 0.14);
@@ -42,18 +57,19 @@ textarea.summary {
   box-shadow: 0px -3px 7px 4px rgba(0, 0, 0, 0.14);
 }
 
+.dashboard-header ul {
+  padding: 0 20px;
+}
+
 .dashboard-header li {
-  position: absolute;
-  right: 2%;
-  top: 5%;
+  padding: 3px 8px;
   z-index: 2;
-  color: white;
 }
 
 .logo-bg {
-  width: 200px;
-  height: 100%;
-  background-color: #262b30;
+  width: var(--admin-sidemenu-width);
+  height: var(--admin-topbar-height);
+  background-color: var(--admin-sidemenu-background-dark);
   text-align: center;
 }
 
@@ -63,20 +79,20 @@ ul li a:hover {
 }
 
 .dashboard-side-menu {
-  width: 200px;
+  width: var(--admin-sidemenu-width);
   position: fixed;
-  top: 30px;
+  top: 0;
   left: 0;
-  height: calc(100% - 30px);
+  height: var(--admin-sidemenu-height);
   z-index: 1;
 }
 
 .dashboard-wrapper {
   position: absolute;
-  top: 30px;
-  left: 200px;
-  height: calc(100% - 30px);
-  width: calc(100% - 200px);
+  top: var(--admin-topbar-height);
+  left: var(--admin-sidemenu-width);
+  height: calc(100vh - var(--admin-topbar-height));
+  width: calc(100vw - var(--admin-sidemenu-width));
   padding: 3%;
 }
 

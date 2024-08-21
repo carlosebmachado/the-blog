@@ -23,7 +23,7 @@ CREATE TABLE tb_user (
 -- Estrutura da tabela post
 CREATE TABLE tb_post (
   id bigint(20) UNSIGNED NOT NULL,
-  title varchar(30) NOT NULL,
+  title varchar(255) NOT NULL,
   date date NOT NULL,
   likes int(11) NOT NULL DEFAULT '0',
   body longtext NOT NULL,
