@@ -53,4 +53,4 @@ if (isset($_GET['q'])) {
       </div>
     </nav>
   </header>
-  <main>
+  <main style="min-height: calc(100vh - 192px);">

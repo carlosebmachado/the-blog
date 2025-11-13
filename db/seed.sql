@@ -1,8 +1,10 @@
+USE `blogdb`;
+
 --
--- Criando tabelas
+-- Creating tables for database `blogdb`
 --
 
--- Estrutura da tabela tb_about
+-- tb_about table structure
 CREATE TABLE tb_about (
   id bigint(20) UNSIGNED NOT NULL,
   name varchar(255) NOT NULL,
@@ -10,7 +12,7 @@ CREATE TABLE tb_about (
   photo longtext DEFAULT NULL
 );
 
--- Estrutura da tabela tb_user
+-- tb_user table structure
 CREATE TABLE tb_user (
   id bigint(20) UNSIGNED NOT NULL,
   name varchar(255) NOT NULL,
@@ -20,7 +22,7 @@ CREATE TABLE tb_user (
   pwd varchar(255) NOT NULL
 );
 
--- Estrutura da tabela post
+-- tb_post table structure
 CREATE TABLE tb_post (
   id bigint(20) UNSIGNED NOT NULL,
   title varchar(255) NOT NULL,
@@ -30,7 +32,7 @@ CREATE TABLE tb_post (
   image longtext DEFAULT NULL
 );
 
--- Estrutura da tabela tb_commentary
+-- tb_commentary table structure
 CREATE TABLE tb_commentary (
   id bigint(20) UNSIGNED NOT NULL,
   name varchar(255) NOT NULL,
@@ -40,7 +42,7 @@ CREATE TABLE tb_commentary (
   post_id bigint(20) UNSIGNED NOT NULL
 );
 
--- Estrutura da tabela tb_contact_message
+-- tb_contact_message table structure
 CREATE TABLE tb_contact_message (
   id bigint(20) UNSIGNED NOT NULL,
   name varchar(255) NOT NULL,
@@ -51,65 +53,65 @@ CREATE TABLE tb_contact_message (
 
 
 --
--- Criando primary keys e unique keys
+-- Creating indexes
 --
 
--- Índices para tabela tb_about
+-- tb_about table indexes
 ALTER TABLE tb_about
   ADD PRIMARY KEY (id),
   ADD UNIQUE KEY id (id);
 
--- Índices para tabela tb_admin_user
+-- tb_admin_user table indexes
 ALTER TABLE tb_user
   ADD PRIMARY KEY (id),
   ADD UNIQUE KEY id (id);
 
--- Índices para tabela tb_post
+-- tb_post table indexes
 ALTER TABLE tb_post
   ADD PRIMARY KEY (id),
   ADD UNIQUE KEY id (id);
 
--- Índices para tabela tb_commentary
+-- tb_commentary table indexes
 ALTER TABLE tb_commentary
   ADD PRIMARY KEY (id),
   ADD UNIQUE KEY id (id);
 
--- Índices para tabela tb_contact_message
+-- tb_contact_message table indexes
 ALTER TABLE tb_contact_message
   ADD PRIMARY KEY (id),
   ADD UNIQUE KEY id (id);
 
 
 --
--- Criando auto increments
+-- Setting AUTO_INCREMENT
 --
 
--- AUTO_INCREMENT de tabela tb_about
+-- tb_about table AUTO_INCREMENT
 ALTER TABLE tb_about
   MODIFY id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
--- AUTO_INCREMENT de tabela tb_user
+-- tb_user table AUTO_INCREMENT
 ALTER TABLE tb_user
   MODIFY id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
--- AUTO_INCREMENT de tabela tb_post
+-- tb_post table AUTO_INCREMENT
 ALTER TABLE tb_post
   MODIFY id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
--- AUTO_INCREMENT de tabela tb_commentary
+-- tb_commentary table AUTO_INCREMENT
 ALTER TABLE tb_commentary
   MODIFY id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
--- AUTO_INCREMENT de tabela tb_contact_message
+-- tb_contact_message table AUTO_INCREMENT
 ALTER TABLE tb_contact_message
   MODIFY id bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 
 --
--- Criando foreign keys
+-- Creating foreign keys
 --
 
--- AUTO_INCREMENT de tabela tb_commentary
+-- tb_commentary table foreign keys
 ALTER TABLE tb_commentary
   ADD CONSTRAINT fk_comment_post FOREIGN KEY (post_id) REFERENCES tb_post(id) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
@@ -117,6 +119,6 @@ ALTER TABLE tb_commentary
 -- --------------------------------------------------------
 
 
--- Inserindo usuário padrão
+-- Default user insert
 INSERT INTO tb_user (id, name, change_pwd, role, uid, pwd) VALUES
 (1, 'Admin', 1, 'admin', 'admin', '21232f297a57a5a743894a0e4a801fc3');-- pwd = md5('admin')
