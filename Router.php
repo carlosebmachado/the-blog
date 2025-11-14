@@ -11,7 +11,7 @@ class Router
 
   public static function get($path, $arg)
   {
-    $url = @$_GET['url'];
+    $url = @$_GET['url'] ?? '';
 
     if ($path == '')
       $path = '/';

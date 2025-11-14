@@ -48,7 +48,12 @@ class Post extends Model
   }
   public function get_summary()
   {
-    return substr($this->body, 0, 500) . '...';
+    for ($i = 500; $i < strlen($this->body); $i++) {
+      if ($this->body[$i] == ' ') {
+        return strip_tags(substr($this->body, 0, $i), '<p><br>') . '...';
+      }
+    }
+    return strip_tags($this->body, '<p><br>');
   }
   public function get_likes()
   {
@@ -122,7 +127,7 @@ class Post extends Model
     }
     $pq = substr($pq, 0, strlen($pq) - 4);
     //print("SELECT * FROM `blog_post` WHERE ".$pq." LIMIT ".$offset.", ".$limit);
-    $data = DAO::select("SELECT * FROM `" . Post::TABLE_NAME . "` WHERE " . $pq . " LIMIT " . $offset . ", " . $limit);
+    $data = DAO::select("SELECT * FROM `" . Post::TABLE_NAME . "` WHERE " . $pq . " ORDER BY `date` DESC LIMIT " . $offset . ", " . $limit . "");
     if ($data == null) return [];
     $blog_posts = [];
     foreach ($data as $q) {
@@ -135,7 +140,7 @@ class Post extends Model
 
   public static function select_on_interval($limit, $offset)
   {
-    $data = DAO::select("SELECT * FROM `" . Post::TABLE_NAME . "` LIMIT " . $offset . ", " . $limit . "");
+    $data = DAO::select("SELECT * FROM `" . Post::TABLE_NAME . "` ORDER BY `date` DESC LIMIT " . $offset . ", " . $limit . "");
     if ($data == null) return [];
     $blog_posts = [];
     foreach ($data as $q) {

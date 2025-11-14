@@ -10,9 +10,35 @@ class DAO
 
   public static function get_pdo()
   {
-    if (!isset($pdo)) {
-      $pdo = new \PDO('mysql:host=' . \Config::DB_HOST . ';dbname=' . \Config::DB_NAME, \Config::DB_USER, \Config::DB_PASSWORD);
+    static $pdo = null;
+
+    if ($pdo === null) {
+      $host = \Config::DB_HOST;
+      $db   = \Config::DB_NAME;
+      $user = \Config::DB_USER;
+      $pass = \Config::DB_PASSWORD;
+
+      $dsn = "mysql:host=$host;dbname=$db;charset=utf8mb4";
+
+      $attempts = 0;
+      $maxAttempts = 10;
+
+      while ($attempts < $maxAttempts) {
+        try {
+          $pdo = new \PDO($dsn, $user, $pass, [
+            \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+          ]);
+          break;
+        } catch (\PDOException $e) {
+          $attempts++;
+          if ($attempts >= $maxAttempts) {
+            throw $e;
+          }
+          sleep(1);
+        }
+      }
     }
+
     return $pdo;
   }
 

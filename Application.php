@@ -69,10 +69,6 @@ class Application
       $adminCommentController->index();
     });
 
-    Router::get('/', function () use ($homeController) {
-      $homeController->index();
-    });
-
     Router::get('/home', function () use ($homeController) {
       $homeController->index();
     });
@@ -91,6 +87,10 @@ class Application
 
     Router::get('/seed', function () use ($seedController) {
       $seedController->index();
+    });
+
+    Router::get('/', function () use ($homeController) {
+      $homeController->index();
     });
 
     if (!Router::executed()) $errorController->index();
